@@ -4,8 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
          has_many :products, dependent: :destroy
+         has_many :comments, dependent: :destroy
          has_one :shop, dependent: :destroy
 	has_many :registeration_numbers
+  acts_as_commontator
+  ratyrate_rater
   
   def is_agent?
   	self.role == "agent"

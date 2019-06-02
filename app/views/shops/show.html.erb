@@ -1,72 +1,182 @@
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="/assets/favicon.png" type="image/png">
+        <title>MeetMe Personal</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/assets/lnr.css">
+        <link rel="stylesheet" href="/assets/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/flaticon.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="/assets/service.css">
+        <link rel="stylesheet" href="/assets/resp.css">
+        <script src="/assets/theme.js"></script>
+    </head>
 <%= render 'welcome/sub' %>
 <br>
 <br>
 <br>
-<body>
 
 
 
-    <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+    <body>
       
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" style="text-align:center;"><%= @shop.name %>'s Contact Info</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
+        <style>
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top:10px;
+}
+
+.middle {
+  margin-top:10px;
+  float: left;
+  width: 70%;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  .right {
+    display: none;
+  }
+}
+</style>
+
+        <!--================Header Menu Area =================-->
         
-        <!-- Modal body -->
-        <div class="modal-body">
-         <h3><b>Location:</b></h3><br>
-         <p><%= @shop.location %></p>
-         <hr>
+        <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+            <div class="container box_1620">
+              <div class="banner_inner d-flex align-items-center">
+          <div class="banner_content">
+            <div class="media">
+              <div class="d-flex">
+                <% if mobile_device == "mobile" %>
+                <img src="<%= @shop.imageshop %>" style="height:100%; width:100%;" alt="">
+                <% else %>
+                <img src="<%= @shop.imageshop %>" style="height:520px; width:500px;" alt="">
+                <% end %>
+              </div>
+              <div class="media-body">
+                <div class="personal_text">
+                  <h3 style="font-size: 24px;"><%= @shop.name %></h3>
+                  <h6><%= @shop.location %></h6>
+                  <h4><%= @shop.category %></h4>
+                  <p><div class="small-2 large-4 columns">
+    <% if current_user %>
+    Rate <%= @shop.name %>:
+       <%= rating_for @shop, "service", disable_after_rate: true, imdb_avg: true %>
+     
+    <% end %>
+  </div></p>
 
-         <h3><b>Phone:</b></h3><br>
-         <p><%= @shop.phone %></p>
-         <hr>
 
-         <h3><b>Website:</b></h3><br>
-         <p><%= @shop.web %></p>
-         <hr>
-
-         <h3><b>Email:</b></h3><br>
-         <p><%= @shop.email %></p>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div id="colorlib-page">
-
-    <div id="colorlib-main">
-      <div class="hero-wrap js-fullheight" style="background-image: url(/assets/bg_1.jpg);" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="js-fullheight d-flex justify-content-center align-items-center">
-          <div class="col-md-8 text text-center">
-            <div class="img mb-4"><img src="<%= @shop.imageshop %>" style="width:150px; height:150px; border-radius: 50%;"></div>
-            <div class="desc">
-              <h2 class="subheading"><%= @shop.category %></h2>
-              <h1 class="mb-4"><%= @shop.name %></h1>
-              <p class="mb-4"><%= @shop.description %></p>
-              <p class="btn-custom" data-toggle="modal" data-target="#myModal">Contact Shop </p>
-              <% if current_user=(@shop.user) %>
-<%= link_to 'Edit', edit_shop_path(@shop), class: 'btn btn-danger' %>
-<% end %>
+                  <ul class="list basic_info">
+                    <li><a href="#"><i class="lnr lnr-calendar-full"></i> 31st December, 1992</a></li>
+                    <li><a href="#"><i class="lnr lnr-phone-handset"></i> <%= @shop.phone %></a></li>
+                    <li><a href="#"><i class="lnr lnr-envelope"></i> <%= @shop.email %></a></li>
+                    <li><a href="#"><i class="lnr lnr-home"></i> <%= @shop.location %></a></li>
+                    <li><a href="#"><i class="lnr lnr-laptop"></i> <%= @shop.web %></a></li>
+                  </ul>
+                  <ul class="list personal_social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <section class="ftco-section">
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        <% if @shop.business == "Service Provider" %>
+
+        <section class="welcome_area p_120">
+          <div class="container">
+            <div class="row welcome_inner">
+              <div class="col-lg-6">
+                <div class="welcome_text">
+                  <h4>About <%= @shop.name %></h4>
+                  <p><%= @shop.description %></p>
+                  <div class="row">
+                    
+                    <div class="col-md-12">
+                      <div class="wel_item">
+                        <i class="lnr lnr-star"></i> <i class="lnr lnr-star"></i> <i class="lnr lnr-star"></i>
+                        <h4>254</h4>
+                        <p> 254 People have reviewd this business.</p>
+                      </div>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <span class="heading">User Rating</span>
+<p> Rating based on 254 reviews.</p>
+<hr style="border:3px solid #f1f1f1">
+
+<%= commontator_thread(@shop) %>
+
+<div class="row">
+
+</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <% else %>
+        
+<section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-7 heading-section text-center">
@@ -105,6 +215,9 @@
         </div>
       </div>
     </section>
+<% end %>
 
-  </body>
+        
+       
+    </body>
 </html>

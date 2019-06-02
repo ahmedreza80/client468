@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /shops
   # GET /shops.json
@@ -87,6 +88,6 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:name, :description, :imageshop, :location, :web, :email, :state, :city, :area, :phone, :business, :category)
+      params.require(:shop).permit(:name, :description, :imageshop, :location, :web, :email, :facebook, :twitter, :linkedin, :operating_hours, :state, :city, :area, :phone, :business, :category)
     end
 end

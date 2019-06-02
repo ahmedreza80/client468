@@ -18,26 +18,40 @@
       <%= form.text_field :name, id: :shop_name %>
       <label for="mail">Email:</label>
       <%= form.text_field :email, id: :shop_email %>
+      <label>Phone Number:</label>
+      <%= form.text_field :phone, id: :shop_phone %><br>
       <label for="password">Description:</label>
       <%= form.text_area :description, id: :shop_description %>
       <label>Image:</label>
       <%= form.file_field :imageshop, id: :shop_imageshop %>
+       <label for="job">Website:</label>
+      <%= form.text_field :web, id: :shop_web %>
+
+      <label for="job">Facebook:</label>
+      <%= form.text_field :facebook, id: :shop_facebook, placeholder: "Link to your facebook page *Not Mandatory*" %>
+
+      <label for="job">Twitter:</label>
+      <%= form.text_field :twitter, id: :shop_twitter, placeholder: "Link to your twitter page *Not Mandatory*" %>
+
+      <label for="job">Linkedin:</label>
+      <%= form.text_field :linkedin, id: :shop_linkedin, placeholder: "Link to your linkedin page *Not Mandatory*" %>
     </fieldset>
     <fieldset>
       <legend><span class="number">2</span>Important Infos</legend>
       <label for="bio">Location:</label>
-      <%= form.text_field :location, id: :shop_location %>
+      <%= form.text_field :location, id: :shop_location, placeholder: "Full address" %>
+      <label for="bio">Business Timing:</label>
+      <%= form.text_field :operating_hours, id: :shop_operating_hours, placeholder: "Ex: Monday to Friday: 10AM to 11PM" %>
     </fieldset>
     <fieldset>
       <label for="bio">Registeration Number:</label>
       <%= form.text_field :registeration_number, id: :registeration_number %>
     </fieldset>
-    <fieldset>
-      <label for="job">Website:</label>
-      <%= form.text_field :web, id: :shop_web %>
-      <label>Phone Number:</label>
-      <%= form.text_field :phone, id: :shop_phone %><br><label class="light" for="business">Business Type</label>
-      <%= form.select :busness, ['Service Provider', 'Products Based Business'] %><label class="light" for="design">Business Category</label><br>
+    <fieldset>, 
+     
+      
+      <label class="light" for="business">Business Type</label>
+      <%= form.select :business, ['Service Provider', 'Products Based Business'] %><label class="light" for="design">Business Category</label><br>
       <%= form.select :category, ['Electronics', 'Fashion', 'Furniture', 'Kitchen Stores', 'Restraunts', 'Hotels', 'General Stores', 'Grocery Stores'] %>
       <label>Please select a State:</label>
       <%= form.select :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected:  shop.state ), {}, id: "state"%>

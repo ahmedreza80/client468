@@ -6,4 +6,6 @@ class Product < ApplicationRecord
 	belongs_to :shop
 	has_many :items, class_name: 'OrderItem'
 	has_many :orders, through:  :items
+	acts_as_commontable
+	ratyrate_rateable 'pro'
 end

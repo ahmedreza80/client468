@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :shops
+  resources :shops do
+  resources :comments, only: [:create, :index, :destroy]
+end
   # devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :products
+  mount Commontator::Engine => '/commontator'
+
 
   resources :charges
 

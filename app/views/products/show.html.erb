@@ -34,6 +34,13 @@
             <h3 class="product-title"><%= @product.name %></h3>
             <div class="rating">
               <div class="stars">
+                <p><div class="small-2 large-4 columns">
+    <% if current_user %>
+    Rate <%= @product.name %>:
+       <%= rating_for @product, "pro", disable_after_rate: true, imdb_avg: true %>
+     
+    <% end %>
+  </div></p>
                 <h3>NearClick Certified Product</h3>
               </div>
               
@@ -71,7 +78,9 @@
       </div>
     </div>
   </div>
+<hr style="border:3px solid #f1f1f1">
 
+<%= commontator_thread(@product) %>
   </body>
 </html>
 
