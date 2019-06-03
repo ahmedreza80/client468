@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/assets/service.css">
         <link rel="stylesheet" href="/assets/resp.css">
         <script src="/assets/theme.js"></script>
+        <script src="/assets/jquery.raty.js"></script>
 
     </head>
 <%= render 'welcome/sub' %>
@@ -336,7 +337,7 @@
 
        <script>
       $('.star-rating').raty({
-        path: '/public/assets/',
+        path: '/assets/',
         readOnly: true,
         score: function() {
               return $(this).attr('data-score');
