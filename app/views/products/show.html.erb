@@ -48,6 +48,7 @@
             <p class="product-description"><%= @product.description %></p>
             <h4 class="price">current price: <span>Rs: <%= @product.price %></span></h4>
             <p class="vote"><strong>91%</strong> of buyers enjoyed this product!</p>
+            <% if @product.gst? %>
             <div class="action">
               <%= form_tag order_items_path do %>
         <%= hidden_field_tag :product_id, @product.id %>
@@ -58,6 +59,11 @@
               <% end %>
               <!-- <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> -->
             </div>
+            <% else %>
+            <div class="action">
+              <button class="add-to-cart btn btn-default" style="padding:10; margin:0;"><a href="tel:<%= @product.phone %>">Call Now</a></button>
+            </div>
+            <% end %>
 
             <div class="action">
               <% if current_user == @product.user %>

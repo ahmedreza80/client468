@@ -689,6 +689,10 @@
 <%= form.select :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected:  current_user.shop.state ), {}, id: "state"%>
 <%= form.select :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] },selected:  current_user.shop.city ),{}, :id => 'city' %>
 <%= form.select :area, options_for_select([["Select an Area",""]] + Area.all.map { |c| [c.name, c.id] },selected:  current_user.shop.area ),{}, :id => 'area' %>
+<div class="trackit" style="display: none;">
+<%= form.text_field :gst, :value => current_user.shop.gst, :id => 'gst' %>
+<%= form.text_field :phone, :value => current_user.shop.phone, :id => 'phone' %>
+</div>
 
 </fieldset>
 <div class="actions">
