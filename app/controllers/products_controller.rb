@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     if @previews.blank?
       @avg_preview = 0
     else
-      @avg_preview = @previews.average(:rating)
+      @avg_preview = @previews.average(:rating).round(2)
     end
   end
 
