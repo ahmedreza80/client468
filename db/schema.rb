@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190602174315) do
+ActiveRecord::Schema.define(version: 20190603201521) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -88,16 +88,6 @@ ActiveRecord::Schema.define(version: 20190602174315) do
     t.index ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
   end
 
-  create_table "operating_hours", force: :cascade do |t|
-    t.integer "day_of_week"
-    t.time "open"
-    t.time "close"
-    t.integer "shop_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_operating_hours_on_shop_id"
-  end
-
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
@@ -134,6 +124,15 @@ ActiveRecord::Schema.define(version: 20190602174315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
+  end
+
+  create_table "previews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -188,6 +187,16 @@ ActiveRecord::Schema.define(version: 20190602174315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_registeration_numbers_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "shop_id"
+    t.integer "product_id"
   end
 
   create_table "shops", force: :cascade do |t|

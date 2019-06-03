@@ -13,6 +13,13 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     @products = Product.all
+    @reviews = Review.where(shop_id: @shop.id).order("created_at DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end
   end
 
   # GET /shops/new

@@ -86,6 +86,86 @@
     display: none;
   }
 }
+
+
+/*font Awesome http://fontawesome.io*/
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+/*Comment List styles*/
+.comment-list .row {
+  margin-bottom: 0px;
+}
+.comment-list .panel .panel-heading {
+  padding: 4px 15px;
+  position: absolute;
+  border:none;
+  /*Panel-heading border radius*/
+  border-top-right-radius:0px;
+  top: 1px;
+}
+.comment-list .panel .panel-heading.right {
+  border-right-width: 0px;
+  /*Panel-heading border radius*/
+  border-top-left-radius:0px;
+  right: 16px;
+}
+.comment-list .panel .panel-heading .panel-body {
+  padding-top: 6px;
+}
+.comment-list figcaption {
+  /*For wrapping text in thumbnail*/
+  word-wrap: break-word;
+}
+/* Portrait tablets and medium desktops */
+@media (min-width: 768px) {
+  .comment-list .arrow:after, .comment-list .arrow:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+  }
+  .comment-list .panel.arrow.left:after, .comment-list .panel.arrow.left:before {
+    border-left: 0;
+  }
+  /*****Left Arrow*****/
+  /*Outline effect style*/
+  .comment-list .panel.arrow.left:before {
+    left: 0px;
+    top: 30px;
+    /*Use boarder color of panel*/
+    border-right-color: inherit;
+    border-width: 16px;
+  }
+  /*Background color effect*/
+  .comment-list .panel.arrow.left:after {
+    left: 1px;
+    top: 31px;
+    /*Change for different outline color*/
+    border-right-color: #FFFFFF;
+    border-width: 15px;
+  }
+  /*****Right Arrow*****/
+  /*Outline effect style*/
+  .comment-list .panel.arrow.right:before {
+    right: -16px;
+    top: 30px;
+    /*Use boarder color of panel*/
+    border-left-color: inherit;
+    border-width: 16px;
+  }
+  /*Background color effect*/
+  .comment-list .panel.arrow.right:after {
+    right: -14px;
+    top: 31px;
+    /*Change for different outline color*/
+    border-left-color: #FFFFFF;
+    border-width: 15px;
+  }
+}
+.comment-list .comment-post {
+  margin-top: 6px;
+}
 </style>
 
         <!--================Header Menu Area =================-->
@@ -109,11 +189,12 @@
                   <h6><%= @shop.location %></h6>
                   <h4><%= @shop.category %></h4>
                   <p><div class="small-2 large-4 columns">
-    <% if current_user %>
-    Rate <%= @shop.name %>:
-       <%= rating_for @shop, "service", disable_after_rate: true, imdb_avg: true %>
-     
-    <% end %>
+
+    Rating for <%= @shop.name %> is:
+
+     <div class="star-rating" data-score= <%= @avg_review %> ></div>
+          <em><%= "#{@reviews.length} reviews" %></em>
+
   </div></p>
 
 
@@ -153,8 +234,8 @@
                     <div class="col-md-12">
                       <div class="wel_item">
                         <i class="lnr lnr-star"></i> <i class="lnr lnr-star"></i> <i class="lnr lnr-star"></i>
-                        <h4>254</h4>
-                        <p> 254 People have reviewd this business.</p>
+                        <h4><%= "#{@reviews.length}" %></h4>
+                        <p> <%= "#{@reviews.length}" %> User have reviewd this business.</p>
                       </div>
                     </div>
                    
@@ -163,10 +244,45 @@
               </div>
               <div class="col-lg-6">
                 <span class="heading">User Rating</span>
-<p> Rating based on 254 reviews.</p>
+<p> Rating based on <em><%= "#{@reviews.length} reviews" %></em>.</p>
 <hr style="border:3px solid #f1f1f1">
 
-<%= commontator_thread(@shop) %>
+
+<% if @reviews.blank? %>
+            <h3>No reviews just yet, would you like to add the first!</h3>
+            <%= link_to "Write Review",  new_shop_review_path(@shop), class: "btn btn-danger" %>
+          <% else %>
+          <%= link_to "Write Review",  new_shop_review_path(@shop), class: "btn btn-danger" %>
+          <br>
+          <br>
+            <% @reviews.each do |review| %>
+              <div class="col-md-10 col-sm-10">
+              <div class="panel panel-default arrow left">
+                <div class="panel-body">
+                  <header class="text-left">
+                    <div class="comment-user"><i class="fa fa-user"></i> Nearclick User</div>
+                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= review.created_at.strftime("%B %d %Y, %l:%M%P") %></time>
+                  </header>
+                  <hr>
+                  <div class="comment-post">
+                    <p>
+                      <div class="reviews">
+                <div class="star-rating" data-score= <%= review.rating %> ></div>
+                <p><%= review.comment %></p>
+              </div>
+                    </p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+
+
+
+
+
 
 <div class="row">
 
@@ -218,7 +334,15 @@
     </section>
 <% end %>
 
-        
+       <script>
+      $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+              return $(this).attr('data-score');
+      }
+    });
+  </script> 
        
     </body>
 </html>

@@ -3,9 +3,10 @@ class Shop < ApplicationRecord
 	belongs_to :user
 	has_many :products
 	has_many :comments, dependent: :destroy
+  has_many :reviews
 	belongs_to :registeration_number, required: false
 	acts_as_commontable
-	ratyrate_rateable 'service'
+
 
 
 

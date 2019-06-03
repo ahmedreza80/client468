@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  resources :previews
+  resources :reviews
   post '/rate' => 'rater#create', :as => 'rate'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :shops do
   resources :comments, only: [:create, :index, :destroy]
+  resources :reviews, except: [:show, :index]
 end
   # devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :products
+  resources :products do
+    resources :previews, except: [:show, :index]
+  end
   mount Commontator::Engine => '/commontator'
 
 

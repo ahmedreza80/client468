@@ -12,6 +12,12 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @previews = Preview.where(product_id: @product.id).order("created_at DESC")
+    if @previews.blank?
+      @avg_preview = 0
+    else
+      @avg_preview = @previews.average(:rating)
+    end
   end
 
   # GET /products/new

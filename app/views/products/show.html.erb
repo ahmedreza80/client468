@@ -35,11 +35,12 @@
             <div class="rating">
               <div class="stars">
                 <p><div class="small-2 large-4 columns">
-    <% if current_user %>
-    Rate <%= @product.name %>:
-       <%= rating_for @product, "pro", disable_after_rate: true, imdb_avg: true %>
-     
-    <% end %>
+   
+    Rating for <%= @product.name %> is:
+    <div class="star-rating" data-score= <%= @avg_preview %> ></div>
+          <em><%= "#{@previews.length} reviews" %></em>
+      
+   
   </div></p>
                 <h3>NearClick Certified Product</h3>
               </div>
@@ -86,7 +87,45 @@
   </div>
 <hr style="border:3px solid #f1f1f1">
 
-<%= commontator_thread(@product) %>
+<% if @reviews.blank? %>
+            <h3>No reviews just yet, would you like to add the first!</h3>
+            <%= link_to "Write Review",  new_product_preview_path(@product), class: "btn btn-danger" %>
+          <% else %>
+          <%= link_to "Write Review",  new_product_preview_path(@product), class: "btn btn-danger" %>
+          <br>
+          <br>
+            <% @previews.each do |preview| %>
+              <div class="col-md-10 col-sm-10">
+              <div class="panel panel-default arrow left">
+                <div class="panel-body">
+                  <header class="text-left">
+                    <div class="comment-user"><i class="fa fa-user"></i> Nearclick User</div>
+                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= preview.created_at.strftime("%B %d %Y, %l:%M%P") %></time>
+                  </header>
+                  <hr>
+                  <div class="comment-post">
+                    <p>
+                      <div class="reviews">
+                <div class="star-rating" data-score= <%= preview.rating %> ></div>
+                <p><%= preview.comment %></p>
+              </div>
+                    </p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+            <script>
+      $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+              return $(this).attr('data-score');
+      }
+    });
+  </script>
   </body>
 </html>
 
