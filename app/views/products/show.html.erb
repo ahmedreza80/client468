@@ -75,7 +75,7 @@
 
 <hr style="border:3px solid #f1f1f1">
 
-<% if @reviews.blank? %>
+<% if @previews.blank? %>
             <h3>No reviews just yet, would you like to add the first!</h3>
             <%= link_to "Write Review",  new_product_preview_path(@product), class: "btn btn-danger" %>
           <% else %>
