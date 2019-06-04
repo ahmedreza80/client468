@@ -58,9 +58,9 @@
       <label>Please select a State:</label>
       <%= form.select :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected:  shop.state ), {}, id: "state"%>
       <label>Please select a District:</label>
-      <%= form.select :city, options_for_select([["Select a District",""]] + City.all.map { |c| [c.name, c.id] },selected:  shop.city ),{}, :id => 'city' %>
+      <%= form.select :city, options_for_select([["Select a District",""]], selected:  shop.city ),{}, :id => 'city' %>
       <label>Please select an Area:</label>
-      <%= form.select :city, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] },selected:  shop.area ),{}, :id => 'area' %>
+      <%= form.select :city, options_for_select([["Select a Area",""]], selected:  shop.area ),{}, :id => 'area' %>
     </fieldset>
     <div class="bobo" style="text-align:center; padding:0; margin:0;">
       <%= form.submit class: "btn-success" %>
