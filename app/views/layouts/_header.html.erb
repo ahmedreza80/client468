@@ -414,9 +414,11 @@ function closeNav() {
   <br>
   <% if user_signed_in? %>
   <p style="text-align:center;">Welcome <%= current_user.username %></p>
+  <a href="/">Home</a>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :get %>
   <% else %>
   <p style="text-align:center;">Welcome Guest</p>
+  <a href="/">Home</a>
   <a href="/users/sign_in">Sign In</a>
   <a href="/users/sign_up">Register</a>
   <% end %>
@@ -424,6 +426,7 @@ function closeNav() {
   <% if current_user && current_user.is_agent? %>
   <a href="/registeration_numbers">Agent Panel</a>
   <% end %>
+  <a href="/order_tracking">Track Your Order</a>
   <% if current_user&.shop %>
   <a href="/products/new">Add Product</a>
 

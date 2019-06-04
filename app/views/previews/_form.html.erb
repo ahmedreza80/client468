@@ -1,3 +1,5 @@
+<br>
+<br>
 <%= form_with(model: ([@product, preview]), local: true) do |form| %>
   <% if preview.errors.any? %>
     <div id="error_explanation">
@@ -11,20 +13,19 @@
     </div>
   <% end %>
 
-   <div class="field">
+<div class="ohobro">
+  <form action="/action_page.php">
+    <label for="fname">Choose your rating:</label>
     <div id="star-rating"></div>
-  </div>
 
-  <div class="field">
-    <%= form.label :comment %>
+    <label for="lname">Write your preview:</label>
+    <br>
     <%= form.text_area :comment, id: :preview_comment %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
+    <input type="submit" value="Submit">
+  </form>
+</div>
 <% end %>
-
 
 
 <script>
@@ -33,3 +34,30 @@
       scoreName: 'preview[rating]'
     });
   </script>
+
+
+
+<style>
+
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.ohobro {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
