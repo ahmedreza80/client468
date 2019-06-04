@@ -1,11 +1,10 @@
-
 var  selectedCity = "";
-<% if shop.city.present? %>
-  selectedCity = <%= shop.city  %>;
+<% if product.city.present? %>
+  selectedCity = <%= product.city  %>;
 <% end %>
 var  selectedArea = "";
-<% if shop.area.present? %>
-selectedArea = <%= shop.area  %>;
+<% if product.area.present? %>
+selectedArea = <%= product.area  %>;
 <% end %>
 $(function() {
   if ($("select#state").val() == "") {
@@ -29,8 +28,6 @@ $(function() {
       getCitiesOfState(id_value_string)
     }
    });
-
-
   if ($("select#city").val() == "" && selectedCity == "") {
     $("select#area option").remove();
     var row = "<option value=\"" + "" + "\">" + "area" + "</option>";
@@ -46,7 +43,6 @@ $(function() {
     
     getAreasOfCity(selectedCity)
    }
-
     $("select#city").change(function() {
       var id_value_string = $(this).val();
       if (id_value_string == "") {
@@ -59,6 +55,4 @@ $(function() {
         
       }
     });
-
-
   });  
