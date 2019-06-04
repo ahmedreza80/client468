@@ -75,8 +75,7 @@ p {
   position: inherit; }
 
 .navbar {
-  padding: .5rem 0;
-  height: 15px; }
+  padding: .5rem 0; }
 
 .navbar-brand {
   font-size: 31px; }
