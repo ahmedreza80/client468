@@ -76,7 +76,8 @@ p {
 
 .navbar {
   padding: .5rem 0;
-  max-height: 10px !important; }
+  max-height: 10px !important;
+  background: #ffffff; }
 
 .navbar-brand {
   font-size: 31px; }
