@@ -875,36 +875,15 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-          <li class="nav-item dropdown">
-            <p><b style="text-align: center;">Select Your State</b></p>
-            <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              West Bengal
-              <img src="http://pluspng.com/img-png/free-png-plus-sign-plus-sign-icon-button-green-approved-check-712.png" style="width:10px; height:10px;">
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <p><b style="text-align: center;">Select Your DIstrict</b></p>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Kolkata</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Siliguri</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">24 Paragans North</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">24 Paragans South</a>
-             
-            </div>
-          </li>
-
-
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Bihar
-              <img src="http://pluspng.com/img-png/free-png-plus-sign-plus-sign-icon-button-green-approved-check-712.png" style="width:10px; height:10px;">
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <p><b style="text-align: center;">Select Your DIstrict</b></p>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Patna</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Nalanda</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Nawada</a>
-             
-            </div>
-          </li>  
+          <div class="select-wapper">
+                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] } ), id: "state"%>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :city, options_for_select([["Select a City",""]]), :id => 'city' %>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]]), :id => 'area' %>
+                                        </div>
         </div>
         
         <!-- Modal footer -->
