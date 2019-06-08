@@ -9,4 +9,19 @@ class Product < ApplicationRecord
 	has_many :previews
 	acts_as_commontable
 
+
+
+
+def original_deal
+  price
+end
+
+def our_deal
+  offerprice
+end
+
+def percentage_off
+   (Float(original_deal - our_deal) / original_deal * 100).ceil
+end
+
 end

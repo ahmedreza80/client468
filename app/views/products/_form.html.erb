@@ -686,6 +686,7 @@
 <fieldset>
 <legend><span class="number">3</span> Details</legend>
 <%= form.text_field :price, id: :product_price, placeholder: "Price of your product/service (optional for services)" %>
+<%= form.text_field :offerprice, id: :product_offerprice, placeholder: "Offer Price of your product/service *Not Mandatory" %>
 <%= form.select :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected:  current_user.shop.state ), {}, id: "state"%>
 <%= form.select :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] },selected:  current_user.shop.city ),{}, :id => 'city' %>
 <%= form.select :area, options_for_select([["Select an Area",""]] + Area.all.map { |c| [c.name, c.id] },selected:  current_user.shop.area ),{}, :id => 'area' %>

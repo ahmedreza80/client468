@@ -47,7 +47,13 @@
               
             </div>
             <p class="product-description"><%= @product.description %></p>
+            <% if @product.offerprice? %>
+            <h6 class="price">current price: <span><strike>Rs: <%= @product.price %></strike></span></h6>
+            <h4 class="price">Offer price: <span>Rs: <%= @product.offerprice %></span></h4>
+             <p class="vote"><strong><%= number_to_percentage(@product.percentage_off, :precision => 2) %></strong> Off Only For You.</p>
+            <% else %>
             <h4 class="price">current price: <span>Rs: <%= @product.price %></span></h4>
+            <% end %>
             <p class="vote"><strong>91%</strong> of buyers enjoyed this product!</p>
             <% if @product.gst? %>
             <div class="action">
@@ -143,6 +149,9 @@ body {
 img {
   max-width: 100%; }
 
+strike {
+  color: #FF0000;
+}
 .preview {
   display: -webkit-box;
   display: -webkit-flex;
