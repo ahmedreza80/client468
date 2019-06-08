@@ -75,7 +75,9 @@ p {
   position: inherit; }
 
 .navbar {
-  padding: .5rem 0; }
+  padding: .5rem 0;
+  max-height: 10px !important;
+  background: #252a33 }
 
 .navbar-brand {
   font-size: 31px; }
@@ -146,7 +148,8 @@ p {
   color: #aaaaaa;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
-  transition: 0.3s; }
+  transition: 0.3s;
+  background: #252a33 }
   .dropdown-item:hover {
     color: #fff;
     background: none; }
