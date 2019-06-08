@@ -76,8 +76,7 @@ p {
 
 .navbar {
   padding: .5rem 0;
-  max-height: 10px !important;
-  background: #252a33 }
+  max-height: 10px !important; }
 
 .navbar-brand {
   font-size: 31px; }
@@ -148,8 +147,7 @@ p {
   color: #aaaaaa;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
-  transition: 0.3s;
-  background: #252a33 }
+  transition: 0.3s; }
   .dropdown-item:hover {
     color: #fff;
     background: none; }
