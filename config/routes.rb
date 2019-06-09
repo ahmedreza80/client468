@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :highlights
   resources :previews
   resources :reviews
   post '/rate' => 'rater#create', :as => 'rate'

@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def home
+    @highlights = Highlight.all
   end
   def bt1
   	@products = Product.all

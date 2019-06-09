@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190608160100) do
+ActiveRecord::Schema.define(version: 20190609062248) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20190608160100) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
+  end
+
+  create_table "highlights", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.text "description"
+    t.string "date"
+    t.string "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
