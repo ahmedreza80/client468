@@ -9,8 +9,17 @@
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href="/assets/tro.css" rel="stylesheet" type="text/css" media="all" />
 </head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="/assets/tro.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
 <body>
-	<% if @order.tracking == "Order Recived" %>
+	<br>
+	<% if @order.tracking == "Agent Recived Your Order" %>
 <div class="content">
 	<div class="content1">
 		<h2>Order Details</h2>
@@ -46,7 +55,7 @@
 </div>
 
 <div class="header">
-	<h1>Shipment Track</h1>
+	<h1>Order Track</h1>
 </div>
 <div class="content">
 	<div class="content1">
@@ -54,51 +63,19 @@
 	</div>
 	<div class="content2">
 		<div class="content2-header1">
-			<p>Shipped Via : <span>Denny Dots Originals</span></p>
+			<p>Shipped Via : <span>Nearclcik Agent</span></p>
 		</div>
 		<div class="content2-header1">
 			<p>Status : <span><%= @order.tracking %></span></p>
 		</div>
 		<div class="content2-header1">
-			<p>Expected Time : <span>Within 10 Days</span></p>
+			<p>Order Price : <span><%= @order.total %></span></p>
 		</div>
 
 		<div class="clear"></div>
 	</div>
 	
-	<div class="content3">
-        <div class="shipment">
-			<div class="confirm">
-                <div class="imgcircle">
-                    <img src="/assets/confirm.png" alt="confirm order">
-            	</div>
-				<span class="line"></span>
-				<p>Order Recived</p>
-			</div>
-
-			<div class="quality">
-				<div class="imgcircle">
-                	<img src="/assets/quality.png" alt="quality check">
-            	</div>
-				<span class="line"></span>
-				<p>Quality Check</p>
-			</div>
-			<div class="dispatch">
-				<div class="imgcircle">
-                	<img src="/assets/dispatch.png" alt="dispatch product">
-            	</div>
-				<span class="line"></span>
-				<p>Out For Delivery</p>
-			</div>
-			<div class="delivery">
-				<div class="imgcircle">
-                	<img src="/assets/delivery.png" alt="delivery">
-				</div>
-				<p>Shipment Completed</p>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
+	
 </div>
 <% end %>
 
@@ -136,7 +113,7 @@
 
 
 
-<% if @order.tracking == "Quality Check" %>
+<% if @order.tracking == "Agent is on his way" %>
 	<div class="content">
 	<div class="content1">
 		<h2>Order Details</h2>
@@ -180,52 +157,20 @@
 	</div>
 	<div class="content2">
 		<div class="content2-header1">
-			<p>Shipped Via : <span>Denny Dots Originals</span></p>
+			<p>Shipped Via : <span>Nearclick Agent</span></p>
 		</div>
 		<div class="content2-header1">
 			<p>Status : <span><%= @order.tracking %></span></p>
 		</div>
 		<div class="content2-header1">
-			<p>Expected Time : <span>Within 10 Days</span></p>
+			<p>Order Price : <span><%= @order.total %></span></p>
+
 		</div>
 
 		<div class="clear"></div>
 	</div>
 	
-	<div class="content3">
-        <div class="shipment">
-			<div class="confirm">
-                <div class="imgcircle">
-                    <img src="/assets/confirm.png" alt="confirm order">
-            	</div>
-				<span class="line"></span>
-				<p>Order Recived</p>
-			</div>
-
-			<div class="qualitytwo">
-				<div class="imgcircle">
-                	<img src="/assets/quality.png" alt="quality check">
-            	</div>
-				<span class="line"></span>
-				<p>Quality Check</p>
-			</div>
-			<div class="dispatch">
-				<div class="imgcircle">
-                	<img src="/assets/dispatch.png" alt="dispatch product">
-            	</div>
-				<span class="line"></span>
-				<p>Out for delivery</p>
-			</div>
-			<div class="delivery">
-				<div class="imgcircle">
-                	<img src="/assets/delivery.png" alt="delivery">
-				</div>
-				<p>Shipment Completed</p>
-			</div>
-			<div class="clear"></div>
-		</div>
 	</div>
-</div>
 		<% end %>
 
 
@@ -234,7 +179,7 @@
 
 
 
-		<% if @order.tracking == "Out for delivery" %>
+		<% if @order.tracking == "Your order is canceled please contact support" %>
 	<div class="content">
 	<div class="content1">
 		<h2>Order Details</h2>
@@ -278,51 +223,19 @@
 	</div>
 	<div class="content2">
 		<div class="content2-header1">
-			<p>Shipped Via : <span>Denny Dots Originals</span></p>
+			<p>Shipped Via : <span>Nearclick Agent</span></p>
 		</div>
 		<div class="content2-header1">
 			<p>Status : <span><%= @order.tracking %></span></p>
 		</div>
 		<div class="content2-header1">
-			<p>Expected Time : <span>Within 10 Days</span></p>
+			<p>Order Price : <span><%= @order.total %></span></p>
+
 		</div>
 
 		<div class="clear"></div>
 	</div>
 	
-	<div class="content3">
-        <div class="shipment">
-			<div class="confirm">
-                <div class="imgcircle">
-                    <img src="/assets/confirm.png" alt="confirm order">
-            	</div>
-				<span class="line"></span>
-				<p>Order Recived</p>
-			</div>
-
-			<div class="qualitytwo">
-				<div class="imgcircle">
-                	<img src="/assets/quality.png" alt="quality check">
-            	</div>
-				<span class="line"></span>
-				<p>Quality Check</p>
-			</div>
-			<div class="dispatchtwo">
-				<div class="imgcircle">
-                	<img src="/assets/dispatch.png" alt="dispatch product">
-            	</div>
-				<span class="line"></span>
-				<p>Out for delivery</p>
-			</div>
-			<div class="delivery">
-				<div class="imgcircle">
-                	<img src="/assets/delivery.png" alt="delivery">
-				</div>
-				<p>Shipment Completed</p>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
 </div>
 		<% end %>
 
@@ -334,7 +247,8 @@
 
 
 
-		<% if @order.tracking == "Shipment Completed" %>
+		<% if @order.tracking == "Order
+Delivered" %>
 	<div class="content">
 	<div class="content1">
 		<h2>Order Details</h2>
@@ -378,51 +292,20 @@
 	</div>
 	<div class="content2">
 		<div class="content2-header1">
-			<p>Shipped Via : <span>Denny Dots Originals</span></p>
+			<p>Shipped Via : <span>Nearclick Agent</span></p>
 		</div>
 		<div class="content2-header1">
 			<p>Status : <span><%= @order.tracking %></span></p>
 		</div>
 		<div class="content2-header1">
-			<p>Expected Time : <span>Within 10 Days</span></p>
+			<p>Order Price : <span><%= @order.total %></span></p>
+
 		</div>
 
 		<div class="clear"></div>
 	</div>
 	
-	<div class="content3">
-        <div class="shipment">
-			<div class="confirm">
-                <div class="imgcircle">
-                    <img src="/assets/confirm.png" alt="confirm order">
-            	</div>
-				<span class="line"></span>
-				<p>Order Recived</p>
-			</div>
-
-			<div class="qualitytwo">
-				<div class="imgcircle">
-                	<img src="/assets/quality.png" alt="quality check">
-            	</div>
-				<span class="line"></span>
-				<p>Quality Check</p>
-			</div>
-			<div class="dispatchtwo">
-				<div class="imgcircle">
-                	<img src="/assets/dispatch.png" alt="dispatch product">
-            	</div>
-				<span class="line"></span>
-				<p>Out for delivery</p>
-			</div>
-			<div class="deliverytwo">
-				<div class="imgcircle">
-                	<img src="/assets/delivery.png" alt="delivery">
-				</div>
-				<p>Shipment Completed</p>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
+	
 </div>
 		<% end %>
 

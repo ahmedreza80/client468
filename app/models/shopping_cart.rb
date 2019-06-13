@@ -24,6 +24,7 @@ order_item = order.items.find_or_initialize_by(
 )
 
 order_item.price = product.price
+order_item.product.offerprice = product.offerprice
 
 order_item.quantity = quantity
 
@@ -47,5 +48,8 @@ end
     order.sub_total = order.items.sum('quantity*price')
     order.save
   end
+
+
+
 
 end

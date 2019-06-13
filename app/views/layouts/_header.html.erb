@@ -593,6 +593,7 @@ function closeNav() {
   <a href="#"><span><%= link_to pluralize(current_cart.items_count, ''), cart_path %></span> Your Cart</a>
   <a href="#">Wishlist</a>
   <% end %>
+  <a href="/order_tracking">Track Your Order</a>
   <% if current_user && current_user.is_agent? %>
   <a href="/registeration_numbers">Agent Panel</a>
   <% end %>

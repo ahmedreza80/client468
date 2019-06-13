@@ -1,83 +1,22 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 
-<%= render 'welcome/sub' %>
+
 <div class="container" style="margin-top: 100px">
 	<h3 style="text-align:center;">Generate Shop Code</h3>
 	<br>
 	<br>
 </div>	
 
-
-
-<!------ Include the above in your HEAD tag ---------->
-
-
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="content_box">
-<% @numbers.each.with_index(1) do |number,i| %>
+<div class="container">
+  <% @numbers.each.with_index(1) do |number,i| %>
 		
-	<% end %>
-	
-    <div class="right_bar ">
-        	<div class="tab-content ">
-		<div class="tab-pane fade show active" id="lorem" role="tabpanel">
-<!--		   <div class="row">-->
-<!--		        <div class="col-md-4">-->
-<!--		        <p> <b>Tester</b> </p>-->
-<!--		        <p> UI Developer</p>-->
-<!--		    </div>-->
-<!--		     <div class="col-md-8 text-right">-->
-<!--		        <p> +91-938923748 </p>-->
-<!--		        <p> Test@gamil.com </p>-->
-<!--		    </div>-->
-		
-<!--		     <div class="col-md-12">-->
-<!--		              <hr style="margin:5px 0;"/>  -->
-		       
-<!--		         <dl class="row">-->
-<!--  <dt class="col-sm-2">Description lists :</dt>-->
-<!--  <dd class="col-sm-10">  <p>-->
-<!--		             <small>Collaborate closely with project management and development to conceptualize, design, and prototype web features and applications-->
-<!--Work with cross-functional teams to create UI components and designs-->
-<!--Create static and dynamic prototypes-->
-<!--Assist with the development of front-end features-->
-<!--Create front-end applications from concept to implementation-->
-<!--Conceptualize ideas that bring simplicity and user friendliness to complex design roadblocks-->
-<!--Create wireframes, storyboards, user flows, process flows, and site maps to effectively communicate ideas-->
-<!--Work with development and QA teams to ensure compatibility and quality-->
-<!--Conduct user research and evaluate user feedback-->
-<!--Other duties as assigned</small>-->
-<!--		         </p></dd>-->
-
-<!--  <dt class="col-sm-2">Education :</dt>-->
-<!--  <dd class="col-sm-10">-->
-<!--     <p>-->
-<!--		             <small>Collaborate closely with project management and development to conceptualize, design, and prototype web features and applications-->
-<!--Work with cross-functional teams</small>-->
-<!--</p>-->
-<!--  </dd>-->
-<!--  <dt class="col-sm-2">Experience :</dt>-->
-<!--  <dd class="col-sm-10">-->
-<!--     <p>-->
-<!--		             <small>7 Years</small>-->
-<!--</p>-->
-<!--  </dd>-->
-<!--  <dt class="col-sm-2">Score :</dt>-->
-<!--  <dd class="col-sm-10">-->
-<!--     <p>-->
-<!--		             <small>78.023</small>-->
-<!--</p>-->
-<!--  </dd>-->
-<!--</dl>-->
-<!--		         </div>-->
-<!--		   </div>-->
-<table class="table table-bordered">
+	<% end %>          
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Registration Numbers</th>
@@ -89,22 +28,18 @@
         <td><% @numbers.each.with_index(1) do |number,i| %>
 		<a href="<%=registeration_number_orders_path(number.id)%>"><p><%= i %>. <%= number.code %></p></a>
 		<hr>	
-	<% end %></td>
-
-	<td><%= form_with(model: RegisterationNumber.new, local: true) do |form| %>
+	<% end %>
+        <td><%= form_with(model: RegisterationNumber.new, local: true) do |form| %>
 	 
 	  <div class="actions">
 	    <%= form.submit "Generate Code", style: 'font-size:20px;'%>
 	  </div>
 	<% end %></td>
+        
       </tr>
-
-
     </tbody>
   </table>
-		</div>
-
-	</div>
-    </div>
 </div>
+
+
 

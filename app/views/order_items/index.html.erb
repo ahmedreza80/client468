@@ -31,7 +31,11 @@
                 <tr>
                   <td><img width="100" src="<%= item.product.image %>" alt=""></td>
                   <td><%= item.product.name %><br><%= item.product.description %></td>
+                  <% if item.product.offerprice? %>
                   <td> Rs. <%= item.price %> X</td>
+                  <% else %>
+                  <td> Rs. <%= item.price %> X</td>
+                  <% end %>
                   <td><span class="shopBtn"><span class="icon-ok"><%= item.quantity %></span></span> </td>
 
 

@@ -1,3 +1,4 @@
+
 <% if mobile_device == "mobile" %>
 <head>
     <!-- Required meta tags -->
@@ -64,9 +65,7 @@
                                 <form class="form-wrap mt-4">
                                   
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1">
-                                       
-                                        <div class="select-wapper">
+                                      <div class="select-wapper">
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] } ), id: "state"%>
                                         </div>
                                         <div class="select-wapper">
@@ -75,6 +74,9 @@
                                         <div class="select-wapper">
                                         <%= select_tag :area, options_for_select([["Select a Area",""]]), :id => 'area' %>
                                         </div>
+                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1">
+                                       
+                                        
                                         <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
                                     </div>
                                 </form>
@@ -530,8 +532,7 @@ function closeNav() {
                             <div class="col-md-10">
                                 <form class="form-wrap mt-4">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1" style="width:250px;">
-                                       <div class="select-wapper">
+                                      <div class="select-wapper">
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] } ), id: "state"%>
                                         </div>
                                         <div class="select-wapper">
@@ -540,6 +541,8 @@ function closeNav() {
                                         <div class="select-wapper">
                                         <%= select_tag :area, options_for_select([["Select a Area",""]]), :id => 'area' %>
                                         </div>
+                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1" style="width:300px;">
+                                       
                                         
                                         <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
                                     </div>
@@ -557,18 +560,58 @@ function closeNav() {
     <!--// SLIDER -->
     <!--//END HEADER -->
     <!--============================= FIND PLACES =============================-->
+    
+    <br>
+    <% @highlights.each do |highlight| %>
+    <marquee behavior="scroll" direction="left"
+           onmouseover="this.stop();"
+           onmouseout="this.start();">
+<div class="container">
+<div class="jumbotron" style="height:150px; width:1100px; padding:5px; background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
+">
+  
+    <p><strong><%= highlight.title %></strong></p>      
+    <p style="font-size:15px;"><%= highlight.description %></p>
+    <img class="booty" src="<%= highlight.image %>">
+    <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
+    
+  </div>
+  </div>
+</marquee>
+<% end %>
+
+<style>
+.jumbotron img {
+  width: 100px;
+  height: 100px;
+  float: right;
+  position: relative;
+  bottom: 80px;
+}
+
+.add-to-cart {
+  background: #ff9f1a;
+
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover {
+    background: #b36800;
+    color: #fff; }
+.shake {
+  text-align: center;
+}
+p {
+  color: #ffffff;
+}
+</style>
     <section class="main-block">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="styled-heading">
-                      
-<h3>What are you doing</h3>
-
-             
-            </div>
-          </div>
-            <div class="row">
+               <div class="row">
                 <div class="col-md-4">
                     <a href="/welcome/events">
                     <div class="find-place-img_wrap">
@@ -964,7 +1007,7 @@ function closeNav() {
           .attr( "title", "" )
           .attr("placeholder", "State")
           .addClass( "custom-input" )
-          .css('width','100px')
+          .css('width','150px')
           .autocomplete({
             delay: 0,
             minLength: 0,
@@ -1098,7 +1141,7 @@ function closeNav() {
           .attr( "title", "" )
           .attr("placeholder", "District")
           .addClass( "custom-input" )
-          .css('width','100px')
+          .css('width','150px')
           .autocomplete({
             delay: 0,
             minLength: 0,
@@ -1229,7 +1272,7 @@ function closeNav() {
           .attr( "title", "" )
           .attr("placeholder", "Area")
           .addClass( "custom-input" )
-          .css('width','100px')
+          .css('width','150px')
           .autocomplete({
             delay: 0,
             minLength: 0,

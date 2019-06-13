@@ -8,7 +8,8 @@
   <p>
     Having trouble? <a href="/welcome/contact">Contact us</a>
   </p>
-  
+  <%= params[:order_number] if params[:order_number]%>
+  <p>Status : <span><%= @order.tracking %></span></p>
   <p class="lead">
     <a class="btn btn-primary btn-sm" href="/welcome/home" role="button">Continue to homepage</a>
   </p>

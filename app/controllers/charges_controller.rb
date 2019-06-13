@@ -8,6 +8,7 @@ class ChargesController < ApplicationController
   @@order_id = ''
 
   def index
+    
   end
 
   def new

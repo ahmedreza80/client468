@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190609062248) do
+ActiveRecord::Schema.define(version: 20190611063709) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20190609062248) do
     t.integer "order_id"
     t.string "token"
     t.string "status", default: "cart"
+    t.string "total"
+    t.string "quantity"
     t.index ["order_id"], name: "index_orders_on_order_id"
   end
 

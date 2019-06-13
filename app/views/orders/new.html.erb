@@ -136,6 +136,21 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="form-group" style="display: none;">
+                                                            <div class="d-flex justify-content-between">
+                                                          <%= f.text_field :total, :class => 'lala', :value => current_cart.sub_total, placeholder: "Sub Total" %>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="trackit" style="display: none;">
+                                                    <div class="form-group">
+                                                            <div class="d-flex justify-content-between">
+                                                          <label for="exampleFormControlInput1">Tracking</label>
+                                                          <%= f.select :tracking, ['Agent Recived Your Order', 'Agent is on his way', 'Your order is canceled please contact support', 'Order Delivered'  ] %>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+
                                                     
                                                         <div class="dim" style="padding:0; margin:0;">
                                                               <%= f.submit "Save & Continue", class: "btn-success" %>
