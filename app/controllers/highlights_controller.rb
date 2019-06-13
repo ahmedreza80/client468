@@ -25,6 +25,7 @@ class HighlightsController < ApplicationController
   # POST /highlights.json
   def create
     @highlight = Highlight.new(highlight_params)
+    
 
     respond_to do |format|
       if @highlight.save
