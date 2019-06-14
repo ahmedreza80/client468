@@ -902,38 +902,14 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-          
-<% if user_signed_in? %>
-                                <form class="form-wrap mt-4">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_state), :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
-                                        </div>
-                                    </div>
-                                </form>
-                                <% else %>
-                                <form class="form-wrap mt-4">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] } ), id: "state"%>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]]), :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]]), :id => 'area' %>
-                                        </div>
-                                    </div>
-                                </form>
-                                <% end %>
-
-          
+        <select name="state" class="states" id="stateId">
+    <option value="">Select State</option>
+</select>
+<select name="city" class="cities" id="cityId">
+    <option value="">Select City</option>
+</select>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>        
         </div>
         
         <!-- Modal footer -->
