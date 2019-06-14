@@ -110,14 +110,53 @@
         </div>
     </section>
 
+<br>
+    <% @highlights.each do |highlight| %>
+    <marquee behavior="scroll" direction="left"
+           onmouseover="this.stop();"
+           onmouseout="this.start();">
+<div class="container">
+<div class="jumbotron" style="height:150px; width:1100px; padding:5px; background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
+">
+  
+    <p><strong><%= highlight.title %></strong></p>      
+    <p style="font-size:15px;"><%= highlight.description %></p>
+    <img class="booty" src="<%= highlight.image %>">
+    <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
+    
+  </div>
+  </div>
+</marquee>
+<% end %>
 
-                <div class="col-md-5">
-                    <div class="styled-heading">
-                      <h3>What You doing today</h3>
-                        </div>
-                      </div>
-    
-    
+<style>
+.jumbotron img {
+  width: 100px;
+  height: 100px;
+  float: right;
+  position: relative;
+  bottom: 80px;
+}
+
+.add-to-cart {
+  background: #ff9f1a;
+
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover {
+    background: #b36800;
+    color: #fff; }
+.shake {
+  text-align: center;
+}
+p {
+  color: #ffffff;
+}
+</style>
                   
 
     <section class="section-division mb-1">
