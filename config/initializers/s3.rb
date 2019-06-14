@@ -4,8 +4,8 @@ require 'fog'
 CarrierWave.configure do |config|
   config.fog_credentials = {
       :provider               => 'AWS',
-      :aws_access_key_id      => "AKIAIYJUM5J5PVD5INIQ",
-      :aws_secret_access_key  => "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",
+      :aws_access_key_id      => "AKIAQZ6XZSKKX5NED2U6",
+      :aws_secret_access_key  => "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",
       :region                 => 'us-east-1' # Change this for different AWS region. Default is 'us-east-1'
   }
   config.fog_directory  = "theddbucket"
