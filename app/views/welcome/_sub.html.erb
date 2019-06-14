@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="/assets/themify-icons.css">
     <!-- Hover Effects -->
     <link rel="stylesheet" href="/assets/set1.css">
+    <script src="/assets/jquery.raty.js"></script>
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="/assets/style.css">
 
@@ -900,36 +902,46 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-          <li class="nav-item dropdown">
-            <p><b style="text-align: center;">Select Your State</b></p>
-            <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              West Bengal
-              <img src="http://pluspng.com/img-png/free-png-plus-sign-plus-sign-icon-button-green-approved-check-712.png" style="width:10px; height:10px;">
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <p><b style="text-align: center;">Select Your DIstrict</b></p>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Kolkata</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Siliguri</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">24 Paragans North</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">24 Paragans South</a>
-             
-            </div>
-          </li>
+          
+<% if user_signed_in? %>
+                                <form class="form-wrap mt-4">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <div class="select-wapper">
+                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_state), :id => 'city' %>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
+                                        </div>
+                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1" style="width:300px;">
+                                       
+                                        
+                                        <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
+                                    </div>
+                                </form>
+                                <% else %>
+                                <form class="form-wrap mt-4">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <div class="select-wapper">
+                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] } ), id: "state"%>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :city, options_for_select([["Select a City",""]]), :id => 'city' %>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]]), :id => 'area' %>
+                                        </div>
+                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1" style="width:300px;">
+                                       
+                                        
+                                        <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
+                                    </div>
+                                </form>
+                                <% end %>
 
-
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Bihar
-              <img src="http://pluspng.com/img-png/free-png-plus-sign-plus-sign-icon-button-green-approved-check-712.png" style="width:10px; height:10px;">
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <p><b style="text-align: center;">Select Your DIstrict</b></p>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Patna</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Nalanda</a>
-              <a class="dropdown-item" style="color:  #000080;" href="#">Nawada</a>
-             
-            </div>
-          </li>  
+          
         </div>
         
         <!-- Modal footer -->
@@ -951,3 +963,404 @@
 
 }
 </style>
+
+ <script>
+  $( function() {
+    $.widget( "custom.combobox", {
+      _create: function() {
+        this.wrapper = $( "<span>" )
+          .addClass( "custom-combobox" )
+          .insertAfter( this.element );
+ 
+        this.element.hide();
+        this._createAutocomplete();
+        this._createShowAllButton();
+      },
+ 
+      _createAutocomplete: function() {
+        var selected = this.element.children( ":selected" ),
+          value = selected.val() ? selected.text() : "";
+ 
+        this.input = $( "<input>" )
+          .appendTo( this.wrapper )
+          .val( value )
+          .attr( "title", "" )
+          .attr("placeholder", "State")
+          .addClass( "custom-input" )
+          .css('width','120px')
+          .autocomplete({
+            delay: 0,
+            minLength: 0,
+            source: $.proxy( this, "_source" )
+          })
+          .tooltip({
+            classes: {
+              "ui-tooltip": "ui-state-highlight"
+            }
+          });
+ 
+        this._on( this.input, {
+          autocompleteselect: function( event, ui ) {
+            ui.item.option.selected = true;
+            this._trigger( "select", event, {
+              item: ui.item.option
+            });
+          },
+ 
+          autocompletechange: "_removeIfInvalid"
+        });
+      },
+ 
+      _createShowAllButton: function() {
+        var input = this.input,
+          wasOpen = false;
+ 
+        $( "<a>" )
+          .attr( "tabIndex", -1 )
+          .appendTo( this.wrapper )
+          .button({
+            icons: {
+              primary: "ui-icon-triangle-1-s"
+            },
+            text: false
+          })
+          .removeClass( "ui-corner-all" )
+          .addClass( "custom-combobox-toggle ui-corner-right custom-position")
+          .on( "mousedown", function() {
+            wasOpen = input.autocomplete( "widget" ).is( ":visible")
+          })
+          .on( "click", function() {
+            //input.trigger( "focus" );
+ 
+            // Close if already visible
+            if ( wasOpen ) {
+              return;
+            }
+ 
+            // Pass empty string as value to search for, displaying all results
+            input.autocomplete( "search", "" );
+          });
+      },
+ 
+      _source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+        response( this.element.children( "option" ).map(function() {
+            var text = $( this ).text();
+            var value = $(this).val();
+          if ( this.value && ( !request.term || matcher.test(text) ) )
+            return {
+              label: text,
+              value: text,
+              val: value,
+              option: this
+            };
+        }) );
+      },
+ 
+      _removeIfInvalid: function( event, ui ) {
+        console.log("change__________________", ui.item);
+        // Selected an item, nothing to do
+ 
+        // Search for a match (case-insensitive)
+        var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+        this.element.children( "option" ).each(function() {
+          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+            this.selected = valid = true;
+            return false;
+          }
+        });
+        // Found a match, nothing to do
+        if ( valid ) {
+            console.log('found_____________', ui.item.val);
+            getCitiesOfState(ui.item.val)
+            $("#city input").trigger('focus');
+            return;
+        }
+ 
+        // Remove invalid value
+        this.input
+          .val( "" )
+          .attr( "title", value + " didn't match any item" )
+          .tooltip( "open" );
+        this.element.val( "" );
+        this._delay(function() {
+          this.input.tooltip( "close" ).attr( "title", "" );
+        }, 2500 );
+        this.input.autocomplete( "instance" ).term = "";
+      },
+ 
+      _destroy: function() {
+        this.wrapper.remove();
+        this.element.show();
+      }
+    });
+ 
+    $( "#state" ).combobox();
+  });
+  $( function() {
+    $.widget( "custom.combobox", {
+      _create: function() {
+        this.wrapper = $( "<span>" )
+          .addClass( "custom-combobox" )
+          .insertAfter( this.element );
+ 
+        this.element.hide();
+        this._createAutocomplete();
+        this._createShowAllButton();
+      },
+ 
+      _createAutocomplete: function() {
+        var selected = this.element.children( ":selected" ),
+          value = selected.val() ? selected.text() : "";
+ 
+        this.input = $( "<input>" )
+          .appendTo( this.wrapper )
+          .val( value )
+          .attr( "title", "" )
+          .attr("placeholder", "District")
+          .addClass( "custom-input" )
+          .css('width','120px')
+          .autocomplete({
+            delay: 0,
+            minLength: 0,
+            source: $.proxy( this, "_source" )
+          })
+          .tooltip({
+            classes: {
+              "ui-tooltip": "ui-state-highlight"
+            }
+          });
+ 
+        this._on( this.input, {
+          autocompleteselect: function( event, ui ) {
+            ui.item.option.selected = true;
+            this._trigger( "select", event, {
+              item: ui.item.option
+            });
+          },
+ 
+          autocompletechange: "_removeIfInvalid"
+        });
+      },
+ 
+      _createShowAllButton: function() {
+        var input = this.input,
+          wasOpen = false;
+ 
+        $( "<a>" )
+          .attr( "tabIndex", -1 )
+          .appendTo( this.wrapper )
+          .button({
+            icons: {
+              primary: "ui-icon-triangle-1-s"
+            },
+            text: false
+          })
+          .removeClass( "ui-corner-all" )
+          .addClass( "custom-combobox-toggle ui-corner-right custom-position")
+          .on( "mousedown", function() {
+            wasOpen = input.autocomplete( "widget" ).is( ":visible")
+          })
+          .on( "click", function() {
+            input.trigger( "focus" );
+ 
+            // Close if already visible
+            if ( wasOpen ) {
+              return;
+            }
+ 
+            // Pass empty string as value to search for, displaying all results
+            input.autocomplete( "search", "" );
+          });
+      },
+ 
+      _source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+        response( this.element.children( "option" ).map(function() {
+          var text = $( this ).text();
+          var val = $( this ).val();
+          if ( this.value && ( !request.term || matcher.test(text) ) )
+            return {
+              label: text,
+              value: text,
+              val: val,
+              option: this
+            };
+        }) );
+      },
+ 
+      _removeIfInvalid: function( event, ui ) {
+ 
+        // Search for a match (case-insensitive)
+        var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+        this.element.children( "option" ).each(function() {
+          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+            this.selected = valid = true;
+            return false;
+          }
+        });
+ 
+        // Found a match, nothing to do
+        if ( valid ) {
+            getAreasOfCity(ui.item.val)
+            return;
+        }
+ 
+        // Remove invalid value
+        this.input
+          .val( "" )
+          .attr( "title", value + " didn't match any item" )
+          .tooltip( "open" );
+        this.element.val( "" );
+        this._delay(function() {
+          this.input.tooltip( "close" ).attr( "title", "" );
+        }, 2500 );
+        this.input.autocomplete( "instance" ).term = "";
+      },
+ 
+      _destroy: function() {
+        this.wrapper.remove();
+        this.element.show();
+      }
+    });
+ 
+    $( "#city" ).combobox();
+  });
+  $( function() {
+    $.widget( "custom.combobox", {
+      _create: function() {
+        this.wrapper = $( "<span>" )
+          .addClass( "custom-combobox" )
+          .insertAfter( this.element );
+ 
+        this.element.hide();
+        this._createAutocomplete();
+        this._createShowAllButton();
+      },
+ 
+      _createAutocomplete: function() {
+        var selected = this.element.children( ":selected" ),
+          value = selected.val() ? selected.text() : "";
+ 
+        this.input = $( "<input>" )
+          .appendTo( this.wrapper )
+          .val( value )
+          .attr( "title", "" )
+          .attr("placeholder", "Area")
+          .addClass( "custom-input" )
+          .css('width','120px')
+          .autocomplete({
+            delay: 0,
+            minLength: 0,
+            source: $.proxy( this, "_source" )
+          })
+          .tooltip({
+            classes: {
+              "ui-tooltip": "ui-state-highlight"
+            }
+          });
+ 
+        this._on( this.input, {
+          autocompleteselect: function( event, ui ) {
+            ui.item.option.selected = true;
+            this._trigger( "select", event, {
+              item: ui.item.option
+            });
+          },
+ 
+          autocompletechange: "_removeIfInvalid"
+        });
+      },
+ 
+      _createShowAllButton: function() {
+        var input = this.input,
+          wasOpen = false;
+ 
+        $( "<a>" )
+          .attr( "tabIndex", -1 )
+          .appendTo( this.wrapper )
+          .button({
+            icons: {
+              primary: "ui-icon-triangle-1-s"
+            },
+            text: false
+          })
+          .removeClass( "ui-corner-all" )
+          .addClass( "custom-combobox-toggle ui-corner-right custom-position")
+          .on( "mousedown", function() {
+            wasOpen = input.autocomplete( "widget" ).is( ":visible")
+          })
+          .on( "click", function() {
+            input.trigger( "focus" );
+ 
+            // Close if already visible
+            if ( wasOpen ) {
+              return;
+            }
+ 
+            // Pass empty string as value to search for, displaying all results
+            input.autocomplete( "search", "" );
+          });
+      },
+ 
+      _source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+        response( this.element.children( "option" ).map(function() {
+          var text = $( this ).text();
+          if ( this.value && ( !request.term || matcher.test(text) ) )
+            return {
+              label: text,
+              value: text,
+              option: this
+            };
+        }) );
+      },
+ 
+      _removeIfInvalid: function( event, ui ) {
+ 
+        // Selected an item, nothing to do
+        if ( ui.item ) {
+          return;
+        }
+ 
+        // Search for a match (case-insensitive)
+        var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+        this.element.children( "option" ).each(function() {
+          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+            this.selected = valid = true;
+            return false;
+          }
+        });
+ 
+        // Found a match, nothing to do
+        if ( valid ) {
+          return;
+        }
+ 
+        // Remove invalid value
+        this.input
+          .val( "" )
+          .attr( "title", value + " didn't match any item" )
+          .tooltip( "open" );
+        this.element.val( "" );
+        this._delay(function() {
+          this.input.tooltip( "close" ).attr( "title", "" );
+        }, 2500 );
+        this.input.autocomplete( "instance" ).term = "";
+      },
+ 
+      _destroy: function() {
+        this.wrapper.remove();
+        this.element.show();
+      }
+    });
+ 
+    $( "#area" ).combobox();
+  });
+  </script>
