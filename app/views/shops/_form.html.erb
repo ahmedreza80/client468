@@ -14,31 +14,7 @@
 
     <h1>Add Your Shop</h1>
     <fieldset>
-      <legend><span class="number">1</span>Your basic info</legend>
-      <label for="name">Name:</label>
-      <%= form.text_field :name, id: :shop_name %>
-      <label for="mail">Email:</label>
-      <%= form.text_field :email, id: :shop_email %>
-      <label>Phone Number:</label>
-      <%= form.text_field :phone, id: :shop_phone %><br>
-      <label for="password">Description:</label>
-      <%= form.text_area :description, id: :shop_description %>
-      <label>Image:</label>
-      <%= form.file_field :imageshop, id: :shop_imageshop %>
-       <label for="job">Website:</label>
-      <%= form.text_field :web, id: :shop_web %>
-
-      <label for="job">Facebook:</label>
-      <%= form.text_field :facebook, id: :shop_facebook, placeholder: "Link to your facebook page *Not Mandatory*" %>
-
-      <label for="job">Twitter:</label>
-      <%= form.text_field :twitter, id: :shop_twitter, placeholder: "Link to your twitter page *Not Mandatory*" %>
-
-      <label for="job">Linkedin:</label>
-      <%= form.text_field :linkedin, id: :shop_linkedin, placeholder: "Link to your linkedin page *Not Mandatory*" %>
-    </fieldset>
-    <fieldset>
-      <legend><span class="number">2</span>Important Infos</legend>
+      <legend><span class="number">1</span>Important Infos</legend>
       <label for="bio">Location:</label>
       <%= form.text_field :location, id: :shop_location, placeholder: "Full address" %>
       <label for="bio">Business Timing:</label>
@@ -125,6 +101,31 @@ $(function() {
       <%= form.select :area, options_for_select([["Select an Area",""]] + Area.all.map { |c| [c.name, c.id] },selected:  current_user.shop.area ),{}, :id => 'area' %>
 
     </fieldset>
+    <fieldset>
+      <legend><span class="number">2</span>Basic info</legend>
+      <label for="name">Name:</label>
+      <%= form.text_field :name, id: :shop_name %>
+      <label for="mail">Email:</label>
+      <%= form.text_field :email, id: :shop_email %>
+      <label>Phone Number:</label>
+      <%= form.text_field :phone, id: :shop_phone %><br>
+      <label for="password">Description:</label>
+      <%= form.text_area :description, id: :shop_description %>
+      <label>Image:</label>
+      <%= form.file_field :imageshop, id: :shop_imageshop %>
+       <label for="job">Website:</label>
+      <%= form.text_field :web, id: :shop_web %>
+
+      <label for="job">Facebook:</label>
+      <%= form.text_field :facebook, id: :shop_facebook, placeholder: "Link to your facebook page *Not Mandatory*" %>
+
+      <label for="job">Twitter:</label>
+      <%= form.text_field :twitter, id: :shop_twitter, placeholder: "Link to your twitter page *Not Mandatory*" %>
+
+      <label for="job">Linkedin:</label>
+      <%= form.text_field :linkedin, id: :shop_linkedin, placeholder: "Link to your linkedin page *Not Mandatory*" %>
+    </fieldset>
+    
     
     <div class="bobo" style="text-align:center; padding:0; margin:0;">
       <%= form.submit class: "btn-success" %>
