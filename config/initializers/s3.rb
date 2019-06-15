@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
       :provider               => 'AWS',
       :aws_access_key_id      => "AKIATOXUV5QPAZUPBQOH",
       :aws_secret_access_key  => "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",
-      :region                 => 'ap-south-1' # Change this for different AWS region. Default is 'us-east-1'
+      :region                 => 'us-east-1' # Change this for different AWS region. Default is 'us-east-1'
   }
-  config.fog_directory  = "nearclickbucket"
+  config.fog_directory  = "nearclick"
 end
