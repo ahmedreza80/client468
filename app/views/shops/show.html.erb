@@ -223,14 +223,15 @@
         </section>
         <% if @shop.list? %>
         <div class="welcome_text">
-                  <h4><%= @shop.name %> List Of services</h4>
+                  <h6><%= @shop.name %> List Of services</h6>
                 </div>
+                <% end %>
         <% if mobile_device == "mobile" %>
                 <img src="<%= @shop.list %>" style="height:100%; width:100%;" alt="">
                 <% else %>
                 <img src="<%= @shop.list %>" style="height:520px; width:500px;" alt="">
                 <% end %>
-                <% end %>
+
         <!--================End Home Banner Area =================-->
         <% if @shop.business == "Service Provider" %>
 
