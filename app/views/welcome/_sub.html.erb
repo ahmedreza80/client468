@@ -903,7 +903,7 @@
         <!-- Modal body -->
         <div class="modal-body">
           <% if user_signed_in? %>
-          <%= current_user.Location %>
+          <%= current_user.location %>
           <% else %>
           <h3>Please <a href="/users/sign_in">SignUp/SignIn</a> your location will be automaticaly taken. You can change it anytime.</h3>
 <% end %>
