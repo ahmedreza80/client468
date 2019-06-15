@@ -41,7 +41,7 @@
 
 
 
-  <%= render 'welcome/sub' %>
+  
 
 
 <section class="slider d-flex align-items-center" style="max-height:80px;">
@@ -110,8 +110,8 @@
             </div>
         </div>
     </section>
-
- <% if user_signed_in? %>
+<%= render 'welcome/sub' %>
+<% if user_signed_in? %>
     <% @highlights.each do |highlight| %>
     <% if highlight.area == current_user.search_area %>
     <marquee behavior="scroll" direction="left"
@@ -133,7 +133,6 @@
 <% end %>
 <% end %>
 
-
 <style>
 .jumbotron img {
   width: 100px;
@@ -141,7 +140,6 @@
   float: right;
   position: relative;
   bottom: 80px;
-  padding-bottom: 0px;
 }
 
 .add-to-cart {
@@ -647,7 +645,7 @@ function closeNav() {
     <!--//END HEADER -->
     <!--============================= FIND PLACES =============================-->
     
-    <% if user_signed_in? %>
+<% if user_signed_in? %>
     <% @highlights.each do |highlight| %>
     <% if highlight.area == current_user.search_area %>
     <marquee behavior="scroll" direction="left"
