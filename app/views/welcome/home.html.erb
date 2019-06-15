@@ -112,8 +112,9 @@
     </section>
 
 <br>
+<% if @highlight.area == current_user.search_area %>
     <% @highlights.each do |highlight| %>
-    <% if @highlight.area == current_user.search_area %>
+    
     <marquee behavior="scroll" direction="left"
            onmouseover="this.stop();"
            onmouseout="this.start();">
