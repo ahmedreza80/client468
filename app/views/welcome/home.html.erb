@@ -113,7 +113,7 @@
 
 <br>
     <% @highlights.each do |highlight| %>
-    <% if @highlight.area == current_user.search_area %>
+    
     <marquee behavior="scroll" direction="left"
            onmouseover="this.stop();"
            onmouseout="this.start();">
@@ -130,7 +130,7 @@
   </div>
 </marquee>
 <% end %>
-<% end %>
+
 
 <style>
 .jumbotron img {
