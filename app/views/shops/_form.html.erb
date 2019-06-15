@@ -93,6 +93,8 @@ $(function() {
     });
 });
 </script>
+      <label for="job">List Your Services:</label>
+      <%= form.file_field :list, id: :shop_list, placeholder: "List all your services (if Restraunts then your Menu)" %>
       <label>Please select a State:</label>
       <%= form.select :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected:  current_user.shop.state ), {}, id: "state"%>
       <label>Please select a District:</label>
