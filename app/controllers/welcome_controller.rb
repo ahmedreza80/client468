@@ -3,6 +3,21 @@ class WelcomeController < ApplicationController
   def home
     @highlights = Highlight.all
   end
+  def fap
+    @products = Product.all
+  end
+  def dap
+    @products = Product.all
+  end
+  def ahp
+    @products = Product.all
+  end
+  def gav
+    @products = Product.all
+  end
+  def eap
+    @products = Product.all
+  end
   def bt1
   	@products = Product.all
   end
@@ -485,6 +500,201 @@ def fa1
     @products = Product.all
   end
   def fa54
+    @products = Product.all
+  end
+
+
+
+  def fh1
+    @products = Product.all
+  end
+  def fh2
+    @products = Product.all
+  end
+  def fh3
+    @products = Product.all
+  end
+  def fh4
+    @products = Product.all
+  end
+  def fh5
+    @products = Product.all
+  end
+  def fh6
+    @products = Product.all
+  end
+  def fh7
+    @products = Product.all
+  end
+  def fh8
+    @products = Product.all
+  end
+  def fh9
+    @products = Product.all
+  end
+  def fh10
+    @products = Product.all
+  end
+  def fh11
+    @products = Product.all
+  end
+  def fh12
+    @products = Product.all
+  end
+  def fh13
+    @products = Product.all
+  end
+  def fh14
+    @products = Product.all
+  end
+  def fh15
+    @products = Product.all
+  end
+  def fh16
+    @products = Product.all
+  end
+  def fh17
+    @products = Product.all
+  end
+  def fh18
+    @products = Product.all
+  end
+  def fh19
+    @products = Product.all
+  end
+  def fh20
+    @products = Product.all
+  end
+  def fh21
+    @products = Product.all
+  end
+  def fh22
+    @products = Product.all
+  end
+  def fh23
+    @products = Product.all
+  end
+  def fh24
+    @products = Product.all
+  end
+  def fh25
+    @products = Product.all
+  end
+  def fh26
+    @products = Product.all
+  end
+  def fh27
+    @products = Product.all
+  end
+  def fh28
+    @products = Product.all
+  end
+  def fh29
+    @products = Product.all
+  end
+  def fh30
+    @products = Product.all
+  end
+  def fh31
+    @products = Product.all
+  end
+  def fh32
+    @products = Product.all
+  end
+  def fh33
+    @products = Product.all
+  end
+  def fh34
+    @products = Product.all
+  end
+  def fh35
+    @products = Product.all
+  end
+  def fh36
+    @products = Product.all
+  end
+  def fh37
+    @products = Product.all
+  end
+  def fh38
+    @products = Product.all
+  end
+  def fh39
+    @products = Product.all
+  end
+  def fh40
+    @products = Product.all
+  end
+  def fh41
+    @products = Product.all
+  end
+  def fh42
+    @products = Product.all
+  end
+  def fh43
+    @products = Product.all
+  end
+  def fh44
+    @products = Product.all
+  end
+  def fh45
+    @products = Product.all
+  end
+  def fh46
+    @products = Product.all
+  end
+  def fh47
+    @products = Product.all
+  end
+  def fh48
+    @products = Product.all
+  end
+  def fh49
+    @products = Product.all
+  end
+  def fh50
+    @products = Product.all
+  end
+  def fh51
+    @products = Product.all
+  end
+  def fh52
+    @products = Product.all
+  end
+  def fh53
+    @products = Product.all
+  end
+  def fh54
+    @products = Product.all
+  end
+  def fh55
+    @products = Product.all
+  end
+  def fh56
+    @products = Product.all
+  end
+  def fh57
+    @products = Product.all
+  end
+  def fh58
+    @products = Product.all
+  end
+  def fh59
+    @products = Product.all
+  end
+  def fh60
+    @products = Product.all
+  end
+  def fh61
+    @products = Product.all
+  end
+  def fh62
+    @products = Product.all
+  end
+  def fh63
+    @products = Product.all
+  end
+  def fh64
     @products = Product.all
   end
 

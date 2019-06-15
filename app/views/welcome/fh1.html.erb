@@ -1,0 +1,66 @@
+<br>
+<br>
+<br>
+
+  <main>
+
+
+
+
+    <div class="container-fluid bg-cover">
+      <div class="container product-section-cover">
+
+        <div class="row">
+
+
+          <% @products.each do |product| %>
+          <% if product.sub_category == "Sofa" %>
+          <div class="col col-md-4 col-sm-6">
+              <div class="product-grid" style="background:#f3f4f7;">
+                <div class="image">
+                    <img src= "<%= product.image %>" alt="<%= product.name %> 's image" style="height:200px;" class="img-fluid">
+                    <span class="overlay">
+                        <span class="product-details">
+                           <%= link_to "View Details", product, class: "linky" %>
+
+                        </span>
+                    </span>
+                </div>
+                <div class="product-discription py-3">
+                <h4 class="text-center"><%= product.name %></h4>
+                <p class="text-center"><small><%= product.description %></small></p>
+                <span class="product-price">
+                <p class="text-center" >Price: <%= product.price %></p>
+                </span>
+                </div>
+                <div class="product-btn py-2 text-center">
+                <%= link_to "Add To Cart", product, class: "btn btn-lg" %>
+                </div>
+              </div>
+          </div>
+          <% end %>
+          <% end %>
+
+      </div>
+    </div>
+
+
+  </main>
+
+</body>
+
+<style>
+.linky{
+  color: #fff;
+  font-size: 20px;
+}
+
+.linky:hover {
+    color: yellow;
+}
+
+/* selected link */
+.linky:active {
+    color: #fff;
+}
+</style>

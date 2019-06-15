@@ -68,6 +68,13 @@ get '/cart', to: 'order_items#index'
   get 'welcome/shop8'
 
 
+  get 'welcome/ahp'
+  get 'welcome/gav'
+  get 'welcome/eap'
+  get 'welcome/fap'
+  get 'welcome/dap'
+
+
 
 
 
