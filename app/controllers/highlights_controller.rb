@@ -70,6 +70,6 @@ class HighlightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def highlight_params
-      params.require(:highlight).permit(:title, :image, :description, :date, :place)
+      params.require(:highlight).permit(:title, :image, :description, :date, :city, :state, :area, :place)
     end
 end

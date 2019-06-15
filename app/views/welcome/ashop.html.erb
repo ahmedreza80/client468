@@ -1,0 +1,35 @@
+<br>
+<br>
+<div class="container" style=" text-align:center; padding-top: 100px">
+	<div class="center" style="text-align:center;">
+  <h1>All Shops In Your Area</h1>
+</div>
+  <div class="row">
+      	<% @shops.each do |shop| %>
+        <% if shop.area == current_user.search_area %>
+
+	    <div class="col-md-3" >
+	     <img src="<%= shop.imageshop %>" style="height:100px; width:100px;" alt="Park">
+	     <figcaption><b><%= shop.name %></b><figcaption>
+	     <figcaption><%= shop.description %><figcaption>
+	     	<%= link_to "View shop", shop, class: "add-to-cart btn btn-default" %>
+	    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+<style>
+.add-to-cart {
+  background: #ff9f1a;
+
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover {
+    background: #b36800;
+    color: #fff; }
+</style>

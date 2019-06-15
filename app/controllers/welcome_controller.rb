@@ -796,7 +796,9 @@ def hard1
   def shop8
     @shops = Shop.all
   end
-
+  def ashop
+    @shops =Shop.all
+  end
 def search
     # I've just copy-paste your code with database querying
     # It should be optimized with scopes at model level,

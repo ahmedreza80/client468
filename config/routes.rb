@@ -75,7 +75,7 @@ get '/cart', to: 'order_items#index'
   get 'welcome/dap'
 
 
-
+get 'welcome/ashop'
 
 
 
