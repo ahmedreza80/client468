@@ -110,7 +110,7 @@
             </div>
         </div>
     </section>
-<%= render 'welcome/sub' %>
+
 <% if user_signed_in? %>
     <% @highlights.each do |highlight| %>
     <% if highlight.area == current_user.search_area %>
@@ -468,6 +468,7 @@ function closeNav() {
          });
         }
     </script>
+    <%= render 'welcome/sub' %>
 </body>
 
 </html>
