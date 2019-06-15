@@ -903,8 +903,9 @@
         <!-- Modal body -->
         <div class="modal-body">
           <% if user_signed_in? %>
-      <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
-      <br>
+          <%= current_user.location %>
+          <br>
+          <br>
       <a href="/" class="btn-form search-btn" style="font-size:15px;">Change Your Location<i class="pe-7s-angle-right"></i></a>
           <% else %>
           <h3>Please <a href="/users/sign_in">SignUp/SignIn</a> your location will be automaticaly taken. You can change it anytime.</h3>
