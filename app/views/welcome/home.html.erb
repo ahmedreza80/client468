@@ -112,7 +112,6 @@
     </section>
 
 <br>
-<% if @highlight.area == current_user.search_area %>
     <% @highlights.each do |highlight| %>
     
     <marquee behavior="scroll" direction="left"
@@ -131,8 +130,7 @@
   </div>
 </marquee>
 <% end %>
-<% else %>
-<% end %>
+
 
 <style>
 .jumbotron img {
