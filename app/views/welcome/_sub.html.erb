@@ -905,7 +905,9 @@
           <% if user_signed_in? %>
           <div class="suggestion-wrap">
             <h5><strong>Your Current Geo Location</strong></h5>
-        <span class="tooltip"><%= request.location.city %></span>
+            <div class="tooltip">
+        <span><%= request.location.city %></span>
+      </div>
         <span class="tooltiptext">This is your Geo Location, this location will be only used when you haven't added a search location.</span>
       </div>
       
