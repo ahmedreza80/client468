@@ -903,7 +903,7 @@
         <!-- Modal body -->
         <div class="modal-body">
           <% if user_signed_in? %>
-          <%= current_user.location %>
+        <%= request.location.city %>
           <br>
           <br>
       <a href="/" class="btn-form search-btn" style="font-size:15px;">Change Your Location<i class="pe-7s-angle-right"></i></a>
