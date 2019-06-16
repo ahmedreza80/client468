@@ -113,7 +113,7 @@
 
 
 <% if user_signed_in? %>
-<div class="container">
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <% @highlights.each do |highlight| %>
     <% if highlight.area == current_user.search_area %>
@@ -128,21 +128,16 @@
     <div class="carousel-inner">
       
       <div class="item active">
-        
-        <p><strong><%= highlight.title %></strong></p>      
-    <p style="font-size:15px;"><%= highlight.description %></p>
-    
-    <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
-        
+        <%= link_to highlight do%>
+        <img class="dodo" src="<%= highlight.image %>" alt="First slide">
+        <% end %>
       </div>
 
       <div class="item">
-        
-        <p><strong><%= highlight.title %></strong></p>      
-    <p style="font-size:15px;"><%= highlight.description %></p>
+        <%= link_to highlight do%>
+        <img class="dodo" src="<%= highlight.image %>" alt="First slide">
+        <% end %>
     
-    <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
-        
       </div>
 
 
@@ -153,49 +148,22 @@
 <% end %>
 <% end %>
   </div>
-</div>
+
 <% end %>
 
 
 
 
 <style>
-.carousel {
-  height:80%; 
-width:100%; 
-  padding:5px;
-   background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
- }
-
-
-
- .item img {
-  width: 150px;
-  height: 150px;
-  float: right;
+.dodo {
+  height: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
-  bottom: 40px;
 }
-
-.add-to-cart {
-  background: #ff9f1a;
-
-  border: none;
-  text-transform: UPPERCASE;
-  font-weight: bold;
-  color: #fff;
-  -webkit-transition: background .3s ease;
-          transition: background .3s ease; }
-  .add-to-cart:hover {
-    background: #b36800;
-    color: #fff; }
-.shake {
-  text-align: center;
-}
-p {
-  color: #ffffff;
-}
-</style>                  
+</style>
+            
 
     <section class="section-division mb-1">
     <div class="container my-1">
@@ -681,7 +649,7 @@ function closeNav() {
     
 
 <% if user_signed_in? %>
-<div class="container">
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <% @highlights.each do |highlight| %>
     <% if highlight.area == current_user.search_area %>
@@ -696,21 +664,16 @@ function closeNav() {
     <div class="carousel-inner">
       
       <div class="item active">
-        
-        <p><strong><%= highlight.title %></strong></p>      
-    <p style="font-size:15px;"><%= highlight.description %></p>
-    <img class="booty" src="<%= highlight.image %>" >
-    <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
-        
+        <%= link_to highlight do%>
+        <img class="dodo" src="<%= highlight.image %>" alt="First slide">
+        <% end %>
       </div>
 
       <div class="item">
-        
-        <p><strong><%= highlight.title %></strong></p>      
-    <p style="font-size:15px;"><%= highlight.description %></p>
-    <img class="booty" src="<%= highlight.image %>" >
-    <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
-        
+        <%= link_to highlight do%>
+        <img class="dodo" src="<%= highlight.image %>" alt="First slide">
+        <% end %>
+    
       </div>
 
 
@@ -721,47 +684,19 @@ function closeNav() {
 <% end %>
 <% end %>
   </div>
-</div>
+
 <% end %>
 
 
 
 
 <style>
-.carousel {
-  height:150px; 
-  width:100%; 
-  padding:5px;
-   background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
- }
-
-
-
- .item img {
-  width: 150px;
-  height: 150px;
-  float: right;
+.dodo {
+  height: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
-  bottom: 70px;
-}
-
-.add-to-cart {
-  background: #ff9f1a;
-
-  border: none;
-  text-transform: UPPERCASE;
-  font-weight: bold;
-  color: #fff;
-  -webkit-transition: background .3s ease;
-          transition: background .3s ease; }
-  .add-to-cart:hover {
-    background: #b36800;
-    color: #fff; }
-.shake {
-  text-align: center;
-}
-p {
-  color: #ffffff;
 }
 </style>
     <section class="main-block">
