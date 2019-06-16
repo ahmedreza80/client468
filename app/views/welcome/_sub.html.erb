@@ -905,12 +905,21 @@
           <% if user_signed_in? %>
           <div class="suggestion-wrap">
             <h5><strong>Your Current Geo Location</strong></h5>
-            <div class="tooltip">
-        <span><%= request.location.city %></span>
+        <span data-toggle="popover" title="<%= request.location.city %>" data-content="This is your Geo Location, this location will be only used when you haven't added a search location."><%= request.location.city %></span>
       </div>
-        <span class="tooltiptext">This is your Geo Location, this location will be only used when you haven't added a search location.</span>
-      </div>
-      
+      <script>
+$(document).ready(function(){
+
+    $('[data-toggle="popover"]').popover({
+
+        placement : 'top',
+
+        trigger : 'hover'
+
+    });
+
+});
+</script>
           <br>
           <br>
       <a href="/" class="btn-form search-btn" style="font-size:15px;">Change Search Location<i class="pe-7s-angle-right"></i></a>
@@ -953,7 +962,7 @@
 .tooltip {
   position: relative;
   display: inline-block;
-
+  border-bottom: 1px dotted black;
 }
 
 .tooltip .tooltiptext {
