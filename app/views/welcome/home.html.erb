@@ -111,35 +111,70 @@
         </div>
     </section>
 
+
 <% if user_signed_in? %>
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <% @highlights.each do |highlight| %>
     <% if highlight.area == current_user.search_area %>
-    <marquee behavior="scroll" direction="left"
-           onmouseover="this.stop();"
-           onmouseout="this.start();">
-<div class="container">
-<div class="jumbotron" style="height:150px; width:1100px; padding:5px; background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
-">
-  
-    <p><strong><%= highlight.title %></strong></p>      
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      
+      <div class="item active">
+        
+        <p><strong><%= highlight.title %></strong></p>      
     <p style="font-size:15px;"><%= highlight.description %></p>
-    <img class="booty" src="<%= highlight.image %>">
+    <img class="booty" src="<%= highlight.image %>" >
     <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
-    
-  </div>
-  </div>
-</marquee>
+        
+      </div>
+
+      <div class="item">
+        
+        <p><strong><%= highlight.title %></strong></p>      
+    <p style="font-size:15px;"><%= highlight.description %></p>
+    <img class="booty" src="<%= highlight.image %>" >
+    <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
+        
+      </div>
+
+
+    </div>
+
+    <!-- Left and right controls -->
+
 <% end %>
 <% end %>
+  </div>
+</div>
 <% end %>
 
+
+
+
 <style>
-.jumbotron img {
-  width: 100px;
-  height: 100px;
+.carousel {
+  height:150px; 
+  width:1100px; 
+  padding:5px;
+   background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
+ }
+
+
+
+ .item img {
+  width: 150px;
+  height: 150px;
   float: right;
   position: relative;
-  bottom: 80px;
+  bottom: 50px;
 }
 
 .add-to-cart {
@@ -160,8 +195,7 @@
 p {
   color: #ffffff;
 }
-</style>
-                  
+</style>                  
 
     <section class="section-division mb-1">
     <div class="container my-1">
@@ -645,35 +679,70 @@ function closeNav() {
     <!--//END HEADER -->
     <!--============================= FIND PLACES =============================-->
     
+
 <% if user_signed_in? %>
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <% @highlights.each do |highlight| %>
     <% if highlight.area == current_user.search_area %>
-    <marquee behavior="scroll" direction="left"
-           onmouseover="this.stop();"
-           onmouseout="this.start();">
-<div class="container">
-<div class="jumbotron" style="height:150px; width:1100px; padding:5px; background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
-">
-  
-    <p><strong><%= highlight.title %></strong></p>      
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      
+      <div class="item active">
+        
+        <p><strong><%= highlight.title %></strong></p>      
     <p style="font-size:15px;"><%= highlight.description %></p>
-    <img class="booty" src="<%= highlight.image %>">
+    <img class="booty" src="<%= highlight.image %>" >
     <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
-    
-  </div>
-  </div>
-</marquee>
+        
+      </div>
+
+      <div class="item">
+        
+        <p><strong><%= highlight.title %></strong></p>      
+    <p style="font-size:15px;"><%= highlight.description %></p>
+    <img class="booty" src="<%= highlight.image %>" >
+    <%= link_to 'View Details', highlight, class: "add-to-cart btn btn-default" %>
+        
+      </div>
+
+
+    </div>
+
+    <!-- Left and right controls -->
+
 <% end %>
 <% end %>
+  </div>
+</div>
 <% end %>
 
+
+
+
 <style>
-.jumbotron img {
-  width: 100px;
-  height: 100px;
+.carousel {
+  height:150px; 
+  width:1100px; 
+  padding:5px;
+   background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
+ }
+
+
+
+ .item img {
+  width: 150px;
+  height: 150px;
   float: right;
   position: relative;
-  bottom: 80px;
+  bottom: 50px;
 }
 
 .add-to-cart {
