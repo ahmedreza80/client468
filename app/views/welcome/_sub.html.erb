@@ -903,7 +903,9 @@
         <!-- Modal body -->
         <div class="modal-body">
           <% if user_signed_in? %>
-        <%= request.location.city %>
+          <div class="suggestion-wrap">
+        <span><%= request.location.city %></span>
+      </div>
           <br>
           <br>
       <a href="/" class="btn-form search-btn" style="font-size:15px;">Change Your Location<i class="pe-7s-angle-right"></i></a>
@@ -929,5 +931,17 @@
 <style>
 .bobo {
 
+}
+.suggestion-wrap span {
+  font-size: 14px;
+  font-family: 'Helvetica', sans-serif;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0 15px;
+  line-height: 32px;
+  color: #fff;
+  border-radius: 16px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 </style>
