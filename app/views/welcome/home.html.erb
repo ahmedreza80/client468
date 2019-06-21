@@ -52,44 +52,7 @@
 
   <%= render 'welcome/sub' %>
   <% if user_signed_in? %>
-<div id="loco" class="modal fade">
 
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                <h4 class="modal-title">Subscribe our Newsletter</h4>
-
-            </div>
-
-            <div class="modal-body">
-
-               <form class="form-wrap mt-4">
-                                  
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_city), :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
-                                        </div>
-                                        <a href="/welcome/home" class="btn-form search-btn">Submit<i class="pe-7s-angle-right"></i></a>
-                                    </div>
-                  </form>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 <% end %>
 
 <section class="slider d-flex align-items-center" style="max-height:80px;">
