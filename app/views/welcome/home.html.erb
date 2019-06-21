@@ -26,6 +26,15 @@
     <link rel="stylesheet" href="/assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("#myModal").modal('show');
+
+    });
+
+</script>
 </head>
 
 
@@ -42,7 +51,46 @@
 
 
   <%= render 'welcome/sub' %>
+  <% if user_signed_in? %>
+<div id="myModal" class="modal fade">
 
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                <h4 class="modal-title">Subscribe our Newsletter</h4>
+
+            </div>
+
+            <div class="modal-body">
+
+               <form class="form-wrap mt-4">
+                                  
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <div class="select-wapper">
+                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_city), :id => 'city' %>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
+                                        </div>
+                                        <a href="/welcome/home" class="btn-form search-btn">Submit<i class="pe-7s-angle-right"></i></a>
+                                    </div>
+                  </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<% end %>
 
 <section class="slider d-flex align-items-center" style="max-height:80px;">
         <!-- <img src="/assets/slider.jpg" class="img-fluid" alt="#"> -->
@@ -63,25 +111,13 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-10">
                               <% if user_signed_in? %>
-                                <form class="form-wrap mt-4">
-                                  
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_city), :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
-                                        </div>
-                                        <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:15px;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
+                              <form class="form-wrap mt-4">
+                               <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:15px;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
                                         <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1">
-                                       
                                         
-                                        <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
-                                    </div>
-                                </form>
+                                        <a href="/welcome/home" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
+                                        <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:18px;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
+                                      </form>
                                 <% else %>
                                 <form class="form-wrap mt-4">
                                   
@@ -603,10 +639,10 @@ function closeNav() {
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
                                         </div>
                                         <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]], selected: current_user.search_city), :id => 'city' %>
+                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_city), :id => 'city' %>
                                         </div>
                                         <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]], selected: current_user.search_area), :id => 'area' %>
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
                                         </div>
                                         
                                         <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1" style="width:300px;">

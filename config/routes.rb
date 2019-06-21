@@ -707,6 +707,7 @@ get 'welcome/ashop'
   get 'welcome/wed13'
   get 'welcome/wed14'
   get 'welcome/wed15'
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # new routes

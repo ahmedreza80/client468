@@ -1,0 +1,85 @@
+
+
+<div class="container" style=" text-align:center; padding-top: 100px">
+  <div class="center" style="text-align:center;">
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <!-- Javascript -->
+      <script>
+         $(function() {
+            $( "#slider-3" ).slider({
+               range:true,
+               min: 0,
+               max: 5000,
+               values: [ 0, 1000 ],
+               slide: function( event, ui ) {
+                  $( "#price" ).val( "" + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+               }
+            });
+            $( "#price" ).val( "" + $( "#slider-3" ).slider( "values", 0 ) +
+               " - " + $( "#slider-3" ).slider( "values", 1 ) );
+         });
+      </script>
+      <!-- HTML --> 
+      <table>
+        <tr>
+        <td>
+      <p>
+         <label for = "price">Price range:</label>
+         <input type = "text" id = "price" 
+            style = "border:0; color:#b9cd6d; font-weight:bold;">
+      </p>
+      <div id = "slider-3"></div>
+      </td>
+      <td>
+          <%= select_tag :category, options_for_select([["Select a category",""]] + Product.all.map { |c| [c.category, c.category] } ), id: "category"%>
+
+      </td>
+      <td>
+        <a href="/welcome/filter_search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
+      </td>
+        </tr>
+        <tr>
+        </tr>
+
+      </table>
+  <h1>Your Search</h1>
+</div>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-3" >
+       <img src="<%= product.image %>" style="height:100px; width:100px;" alt="Park">
+       <figcaption><b><%= product.name %></b><figcaption>
+       <figcaption><%= product.description %><figcaption>
+        <%= link_to "View Product", product, class: "add-to-cart btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+        $(".search-btn").on("click", function(e){
+          e.preventDefault()
+          var $this = $(this);
+          var $href = $this.attr("href");
+          var category = $("#category").val()
+          var price = $("#price")[0].value
+
+          window.location = $href + '?category='+ category+ "&price="+ price
+        })
+        </script>
+<style>
+.add-to-cart {
+  background: #ff9f1a;
+
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover {
+    background: #b36800;
+    color: #fff; }
+</style>
