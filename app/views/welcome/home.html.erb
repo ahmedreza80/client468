@@ -30,7 +30,7 @@
 
     $(document).ready(function(){
 
-        $("#myModal").modal('show');
+        $("#loco").modal('show');
 
     });
 
@@ -52,7 +52,7 @@
 
   <%= render 'welcome/sub' %>
   <% if user_signed_in? %>
-<div id="myModal" class="modal fade">
+<div id="loco" class="modal fade">
 
     <div class="modal-dialog">
 
@@ -112,10 +112,9 @@
                             <div class="col-md-10">
                               <% if user_signed_in? %>
                               <form class="form-wrap mt-4">
-                               <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:15px;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
                                         <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1">
                                         
-                                        <a href="/welcome/home" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
+                                        <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
                                         <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:18px;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
                                       </form>
                                 <% else %>
