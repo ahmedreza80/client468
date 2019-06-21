@@ -881,162 +881,9 @@
 
 
 
-<% if user_signed_in? %>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#myModalse").modal('show');
-  });
-</script>
-<% end %>
 
 
 
-
- <script>
-        $(window).scroll(function() {
-            // 100 = The point you would like to fade the nav in.
-
-            if ($(window).scrollTop() > 100) {
-
-                $('.fixed').addClass('is-sticky');
-
-            } else {
-
-                $('.fixed').removeClass('is-sticky');
-
-            };
-        });
-        var selectedCity;
-        $("select#state").change(function() {
-          var id_value_string = $(this).val();
-          if (id_value_string == "") {
-           $("select#city option").remove();
-           var row = "<option value=\"" + "" + "\">" + "city" + "</option>";
-           $(row).appendTo("select#city");
-          } else {
-           // Send the request and update city dropdown
-            getCitiesOfState(id_value_string)
-           
-          }
-        });
-        $(".search-btn").on("click", function(e){
-          e.preventDefault()
-          var $this = $(this);
-          var $href = $this.attr("href");
-          var state = $("#state").val()
-          var city = $("#city").val()
-          var search = $("#search").val()
-          window.location = $href + '?search=' + search+ "&state=" +state+ "&city="+ city
-        })
-        function getCitiesOfState(val){
-        $.ajax({
-          dataType: "json",
-          cache: false,
-          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-          url: '/get_cities_by_state',
-          type: 'post',
-          data: {"state" : val},
-          timeout: 5000,
-          error: function(XMLHttpRequest, errorTextStatus, error) {
-           alert("Failed to submit : " + errorTextStatus + " ;" + error);
-          },
-          success: function(data) {
-           // Clear all options from city select
-           $("select#city option").remove();
-           //put in a empty default line
-           // Fill city select
-
-           var row = "<option value=\"" + "" + "\">" + "Select a city" + "</option>";
-           $(row).appendTo("select#city");
-           $.each(data, function(i, j) {
-            if(j.id == selectedCity){
-              row = "<option value=\"" + j.id + "\" selected>" + j.name + "</option>";
-            }else{
-              row = "<option value=\"" + j.id + "\">" + j.name + "</option>"; 
-            }
-            $(row).appendTo("select#city");
-           });
-          }
-         });
-        }
-        var selectedArea;
-        $("select#city").change(function() {
-          var city_id = $(this).val();
-          if (city_id == "") {
-           $("select#area option").remove();
-           var row = "<option value=\"" + "" + "\">" + "city" + "</option>";
-           $(row).appendTo("select#area");
-          } else {
-           // Send the request and update city dropdown
-            getAreasOfCity(city_id)
-           
-          }
-        });
-        $(".search-btn").on("click", function(e){
-          e.preventDefault()
-          var $this = $(this);
-          var $href = $this.attr("href");
-          var state = $("#state").val();
-          var city = $("#city").val();
-          var area = $("#area").val();
-          var search = $("#search").val()
-          window.location = $href + '?search=' + search+ "&state=" +state+ "&city="+ city+ "&area=" +area
-        })
-        function getAreasOfCity(val){
-        $.ajax({
-          dataType: "json",
-          cache: false,
-          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-          url: '/get_areas_by_city',
-          type: 'post',
-          data: {"city" : val},
-          timeout: 5000,
-          error: function(XMLHttpRequest, errorTextStatus, error) {
-           alert("Failed to submit : " + errorTextStatus + " ;" + error);
-          },
-          success: function(data) {
-           // Clear all options from city select
-           $("select#area option").remove();
-           //put in a empty default line
-           // Fill city select
-
-           var row = "<option value=\"" + "" + "\">" + "Select a area" + "</option>";
-           $(row).appendTo("select#area");
-           $.each(data, function(i, j) {
-            if(j.id == selectedArea){
-              row = "<option value=\"" + j.id + "\" selected>" + j.name + "</option>";
-            }else{
-              row = "<option value=\"" + j.id + "\">" + j.name + "</option>"; 
-            }
-            $(row).appendTo("select#area");
-           });
-          }
-         });
-        }
-    </script>
-
-    <div class="modal hide fade" id="boor">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">×</a>
-    <h3>Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
-  </div>
-</div>
-
-
-
-<script type="text/javascript">
-    $(window).on('load',function(){
-        $('#boor').modal('show');
-    });
-</script>
 
 
 
@@ -1056,21 +903,18 @@
         <!-- Modal body -->
         <div class="modal-body">
           <% if user_signed_in? %>
-<form class="form-wrap mt-4">
-                                  
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_city), :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
-                                        </div>
-                                        <a href="/welcome/home" class="btn-form search-btn">Submit<i class="pe-7s-angle-right"></i></a>
-                                    </div>
-                  </form>
+          <div class="suggestion-wrap">
+            <h5><strong>Your Current Geo Location</strong></h5>
+        <span data-toggle="popover" title="<%= request.location.city %>" data-content="This is your Geo Location, this location will be only used when you haven't added a search location."><%= request.location.city %></span>
+      </div>
+      <script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
+          <br>
+          <br>
+      <a href="/" class="btn-form search-btn" style="font-size:15px;">Change Search Location<i class="pe-7s-angle-right"></i></a>
           <% else %>
           <h3>Please <a href="/users/sign_in">SignUp/SignIn</a> your location will be automaticaly taken. You can change it anytime.</h3>
 <% end %>
