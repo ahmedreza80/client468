@@ -57,7 +57,7 @@
       <div class="modal-body">
         <form class="form-wrap mt-4">
                                   
-                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                    <div class="btn-group" role="group" id="search" aria-label="Basic example">
                                       <div class="select-wapper">
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
                                         </div>
