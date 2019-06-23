@@ -70,12 +70,11 @@
                                         
                                         <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
                                         <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:18px;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
-                                        <a class="btn" data-toggle="modal" href="#deleteConfirmation" >Launch Modal</a>
                                       </form>
                                 <% else %>
                                 <form class="form-wrap mt-4">
                                   
-                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                    <div class="btn-group" role="group" id="search" aria-label="Basic example">
                                       <div class="select-wapper">
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
                                         </div>
