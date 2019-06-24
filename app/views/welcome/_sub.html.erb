@@ -901,7 +901,7 @@
         </div>
         
         <!-- Modal body -->
-        <div class="modal-body" style="overflow-y:visible;">
+        <div class="modal-body">
           <% if user_signed_in? %>
   <% if current_user.search_area? %>
   <h4>Change your location</h4>
@@ -911,7 +911,7 @@
                                       <div class="select-wapper">
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
                                         </div>
-                                        <div class="select-wapper">
+                                        <div class="select-wapper" style="z-index: 5000;">
                                         <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_city), :id => 'city' %>
                                         </div>
                                         <div class="select-wapper">
@@ -920,6 +920,7 @@
                                         
                                         <input type="text" style="display:none;" placeholder="What are your looking for?" id="search" class="btn-group1">
                                        
+                                        <br>
                                         <br>
                                         <a href="/welcome/home" class="btn-form search-btn">Change<i class="pe-7s-angle-right"></i></a>
                                     </div>
