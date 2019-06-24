@@ -902,7 +902,34 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-          
+          <% if user_signed_in? %>
+  <% if current_user.search_area? %>
+                              <form class="form-wrap mt-4">
+                                  
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <div class="select-wapper">
+                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_user.search_city), :id => 'city' %>
+                                        </div>
+                                        <div class="select-wapper">
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
+                                        </div>
+                                        
+                                        <input type="text" style="display:none;" placeholder="What are your looking for?" id="search" class="btn-group1">
+                                       
+                                        
+                                        <a href="/welcome/home" class="btn-form search-btn">Submit<i class="pe-7s-angle-right"></i></a>
+                                    </div>
+                  </form>
+                                <% else %>
+                                <a href="/welcome/home" class="btn-form search-btn">Add Location<i class="pe-7s-angle-right"></i></a>
+                  </form>
+<% end %>
+<% else %>
+                                <h4><b><a href="/users/sign_in">Sign in / Register</a> to search locally.</b></h4>
+                                <% end %>
         </div>
         
         <!-- Modal footer -->
