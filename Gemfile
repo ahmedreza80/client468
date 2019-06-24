@@ -20,7 +20,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem 'devise'
 gem 'geocoder'
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.2.0'
 
 gem 'commontator', '~> 5.1.0'
 # Use Uglifier as compressor for JavaScript assets
