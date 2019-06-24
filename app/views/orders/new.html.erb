@@ -132,8 +132,57 @@
 
                                                     <div class="form-group">
                                                             <div class="d-flex justify-content-between">
+                                                              <p><b>Repeat this order:</b></p>
+                                                              <br>
+                                                          <%= label_tag 'repeat_everyday', 'Everyday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Everyday', checked('Everyday'), id: 'repeat_everyday' %>
+
+<br>
+                                                          <p><b>Repeat this order Every:</b></p>
+                                                          <br>
+                                                          <%= label_tag 'repeat_monday', 'Monday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Monday', checked('Monday'), id: 'repeat_monday' %>
+
+
+                                                          
+                                                          <%= label_tag 'repeat_tuesday', 'Tuesday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Tuesday', checked('Tuesday'), id: 'repeat_tuesday' %>
+
+
+                                                          
+                                                          <%= label_tag 'repeat_wednesday', 'Wednesday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Wednesday', checked('Wednesday'), id: 'repeat_wednesday' %>
+
+                                                          
+
+                                                          <%= label_tag 'repeat_thrusday', 'Thrusday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Thrusday', checked('Thrusday'), id: 'repeat_thrusday' %>
+
+
+                                                          
+                                                          <%= label_tag 'repeat_friday', 'Friday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Friday', checked('Friday'), id: 'repeat_friday' %>
+
+                                                          
+                                                          <%= label_tag 'repeat_friday', 'Friday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Friday', checked('Friday'), id: 'repeat_friday' %>
+
+                                                          
+                                                          <%= label_tag 'repeat_saturday', 'Saturday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Saturday', checked('Saturday'), id: 'repeat_saturday' %>
+
+                                                          
+                                                          <%= label_tag 'repeat_sunday', 'Sunday' %>
+                                                          <%= check_box_tag 'order[repeat][]', 'Sunday', checked('Sunday'), id: 'repeat_sunday' %>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="jumbotron">
+                                                      <div class="form-group">
+                                                            <div class="d-flex justify-content-between">
                                                           <%= f.text_field :pincode, :class => 'lala', :value => current_user.pincode, placeholder: "Pincode" %>
                                                         </div>
+                                                    </div>
                                                     </div>
 
                                                     <div class="form-group" style="display: none;">

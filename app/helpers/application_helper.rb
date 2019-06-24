@@ -5,4 +5,7 @@ module ApplicationHelper
   return "mobile" if agent =~ /Mobile/
   return "desktop"
 end
+def checked(area)
+		@order.repeat.nil? ? false : @order.repeat.match(area)
+end
 end

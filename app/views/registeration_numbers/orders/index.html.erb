@@ -29,6 +29,7 @@
         <th>Order Type</th>
         <th>Money</th>
         <th>Status</th>
+        <th>Repeat Order
       </tr>
     </thead>
     
@@ -48,6 +49,7 @@
       <span class="switch-label" data-on="Delivered" data-off="Returned"></span> 
       <span class="switch-handle"></span> 
     </label></td>
+    <td><%= order.repeat %></td>
 
     </tr>
     <% end %>
