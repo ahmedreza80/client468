@@ -1,6 +1,24 @@
 class WelcomeController < ApplicationController
   respond_to :html, :xml, :json
 
+
+
+
+
+  def home
+    # I've just copy-paste your code with database querying
+    # It should be optimized with scopes at model level,
+    # but this is not the main question
+    @highlights = Highlight.all
+
+    if current_user
+      current_user.update_attributes(
+        search_state: params[:state],
+        search_city: params[:city],
+        search_area: params[:area]
+      )
+    end
+  end
   def fap
     @products = Product.all
   end
