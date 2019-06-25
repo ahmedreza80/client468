@@ -31,6 +31,7 @@ get '/cart', to: 'order_items#index'
 
   
   get 'welcome/home'
+  get 'pages/homepage'
   get 'welcome/rest'
   get 'welcome/old'
   get 'welcome/auto'
