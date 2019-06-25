@@ -7,6 +7,15 @@ class WelcomeController < ApplicationController
 
   def home
     @highlights = Highlight.all
+
+
+    if current_user
+      current_user.update_attributes(
+        search_state: params[:state],
+        search_city: params[:city],
+        search_area: params[:area]
+      )
+    end
   end
   def fap
     @products = Product.all
