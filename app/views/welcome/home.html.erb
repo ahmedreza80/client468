@@ -64,16 +64,7 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-10">
                               <% if user_signed_in? %>
-  <% if current_user.search_area? %>
-                              <form class="form-wrap mt-4">
-                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1">
-                                        
-                                        <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
-                                        <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:18px;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
-                                      </form>
-                                <% else %>
                                 <form class="form-wrap mt-4">
-                                  
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                       <div class="select-wapper">
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_user.search_state ), id: "state"%>
@@ -85,16 +76,13 @@
                                         <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_user.search_area), :id => 'area' %>
                                         </div>
                                         
-                                        <input type="text" style="display:none;" placeholder="What are your looking for?" id="search" class="btn-group1">
-                                       
-                                        
-                                        <a href="/welcome/home" class="btn-form search-btn">Submit<i class="pe-7s-angle-right"></i></a>
+                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1" style="width:300px;">
+                                        <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:18px;">Shops Near You<i class="pe-7s-angle-right"></i></a>
+                                        <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
                                     </div>
-                  </form>
-<% end %>
-<% else %>
+                                </form>
+                                <% else %>
                                 <form class="form-wrap mt-4">
-                                  
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                       <div class="select-wapper">
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] } ), id: "state"%>
@@ -105,7 +93,7 @@
                                         <div class="select-wapper">
                                         <%= select_tag :area, options_for_select([["Select a Area",""]]), :id => 'area' %>
                                         </div>
-                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1">
+                                        <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1" style="width:300px;">
                                        
                                         
                                         <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
