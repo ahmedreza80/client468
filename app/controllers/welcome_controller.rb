@@ -7,9 +7,6 @@ class WelcomeController < ApplicationController
 
   def home
     @highlights = Highlight.all
-    end
-
-    respond_with @products
   end
   def fap
     @products = Product.all
