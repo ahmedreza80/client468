@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'pages#homepage'
+
   resources :highlights
   resources :previews
   resources :reviews
@@ -29,7 +31,6 @@ get '/cart', to: 'order_items#index'
 
   
   get 'welcome/home'
-  root "welcome#home"
   get 'welcome/rest'
   get 'welcome/old'
   get 'welcome/auto'
