@@ -16,9 +16,9 @@ class WelcomeController < ApplicationController
 
     if current_user
       current_user.update_attributes(
-        home_state: params[:state],
-        home_city: params[:city],
-        home_area: params[:area]
+        search_state: params[:state],
+        search_city: params[:city],
+        search_area: params[:area]
       )
     end
 
