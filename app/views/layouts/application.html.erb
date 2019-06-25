@@ -4,14 +4,14 @@
     <title>Nearnew</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application' %>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="/assets/jquery.raty.js"></script>
     <script src="/assets/boo.js"></script>
     
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
     <% unless controller_name == "registeration_numbers" %>
     <% if mobile_device == "mobile" %>
     <script src="/assets/jquery.raty.js"></script>
