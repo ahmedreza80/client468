@@ -78,6 +78,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-guests (0.7.0)
+      devise
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.2)
@@ -471,6 +473,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   commontator (~> 5.1.0)
   devise
+  devise-guests
   dotenv (~> 2.2.1)
   fog (~> 1.40)
   fog-aws (~> 0.7.6)

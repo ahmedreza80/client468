@@ -21,6 +21,7 @@ gem 'mini_magick', '~> 4.3'
 gem 'devise'
 gem 'geocoder'
 gem 'jquery-rails'
+gem 'devise-guests'
 
 gem 'commontator', '~> 5.1.0'
 # Use Uglifier as compressor for JavaScript assets
