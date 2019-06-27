@@ -6,7 +6,7 @@
 </div>
   <div class="row">
       	<% @shops.each do |shop| %>
-        <% if shop.area == current_user.search_area %>
+        <% if shop.area == current_or_guest_user.search_area %>
 
 	    <div class="col-md-3" >
 	     <img src="<%= shop.imageshop %>" style="height:100px; width:100px;" alt="Park">
