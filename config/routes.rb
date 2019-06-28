@@ -97,6 +97,7 @@ get 'welcome/ashop'
 
   get 'welcome/hbb1'
   get 'welcome/hbb2'
+  get 'welcome/change'
   get 'welcome/hbb3'
   get 'welcome/hbb4'
   get 'welcome/hbb5'
