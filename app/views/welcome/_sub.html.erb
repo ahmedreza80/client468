@@ -907,13 +907,13 @@
                                   
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                       <div class="select-wapper">
-                                        <%= select_tag :state, selected: current_or_guest_user.search_state, id: "state"%>
+                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), id: "state"%>
                                         </div>
                                         <div class="select-wapper">
-                                        <%= select_tag :city, selected: current_or_guest_user.search_city, :id => 'city' %>
+                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), :id => 'city' %>
                                         </div>
                                         <div class="select-wapper">
-                                        <%= select_tag :area, selected: current_or_guest_user.search_area, :id => 'area' %>
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
                                         </div>
                                         
                                         <hr>
