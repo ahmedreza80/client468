@@ -1,21 +1,30 @@
 <br>
 <br>
+
+<% if params[:search].blank? %>
+   
+<div class="jumbotron">
+  <h1>Wolla!</h1>
+  <p>Your Location has been added and set to default to change it please click on the location icon.</p>
+  <p><a class="btn btn-primary btn-lg" href="/" role="button">Home</a></p>
+</div>
+<% else %>
 <div class="container" style=" text-align:center; padding-top: 100px">
-	<div class="center" style="text-align:center;">
+  <div class="center" style="text-align:center;">
   <h1>Your Search</h1>
 </div>
   <div class="row">
-  	<% @products.each do |product| %>
-	    <div class="col-md-3" >
-	     <img src="<%= product.image %>" style="height:100px; width:100px;" alt="Park">
-	     <figcaption><b><%= product.name %></b><figcaption>
-	     <figcaption><%= product.description %><figcaption>
-	     	<%= link_to "View Product", product, class: "add-to-cart btn btn-default" %>
-	    </div>
+    <% @products.each do |product| %>
+      <div class="col-md-3" >
+       <img src="<%= product.image %>" style="height:100px; width:100px;" alt="Park">
+       <figcaption><b><%= product.name %></b><figcaption>
+       <figcaption><%= product.description %><figcaption>
+        <%= link_to "View Product", product, class: "add-to-cart btn btn-default" %>
+      </div>
     <% end %>
   </div>
 </div>
-
+<% end %>
 <style>
 .add-to-cart {
   background: #ff9f1a;
