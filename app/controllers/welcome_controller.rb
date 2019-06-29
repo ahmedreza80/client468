@@ -6,9 +6,9 @@ class WelcomeController < ApplicationController
 
 
   def home
-    # I've just copy-paste your code with database querying
-    # It should be optimized with scopes at model level,
-    # but this is not the main question
+    @highlights = Highlight.all
+  end
+  def change
     @highlights = Highlight.all
   end
   def fap
