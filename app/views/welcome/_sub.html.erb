@@ -913,7 +913,7 @@
                                         <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), :id => 'city' %>
                                         </div>
                                         <div class="select-wapper">
-                                        <%= current_or_guest_user.search_area, :id => 'area' %>
+                                        <%= current_or_guest_user.search_area %>
                                         </div>
                                         
                                         <hr>
