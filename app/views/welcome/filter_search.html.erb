@@ -12,8 +12,8 @@
             $( "#slider-3" ).slider({
                range:true,
                min: 0,
-               max: 5000,
-               values: [ 0, 1000 ],
+               max: 100000,
+               values: [ 1, 40000 ],
                slide: function( event, ui ) {
                   $( "#price" ).val( "" + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
                }
@@ -23,29 +23,39 @@
          });
       </script>
       <!-- HTML --> 
-      <table>
-        <tr>
-        <td>
+
       <p>
          <label for = "price">Price range:</label>
          <input type = "text" id = "price" 
             style = "border:0; color:#b9cd6d; font-weight:bold;">
       </p>
       <div id = "slider-3"></div>
+      <hr>
+<br>
+<br>
+          <%= select_tag :category, options_for_select([["Select a category",""], ["Electronics"], ["Wedding"], ["Furniture"]]), id: "category"%>
+          <hr>
+          <br>
+          <br>
+        <%= select_tag :brand, options_for_select([["Select a brand",""], ["Apple"], ["Samsung"], ["Nokia"], ["Xiaomi"], ["Vivo"], ["Oppo"], ["Pixle"], ["Honor"], ["Oneplus"], ["Asus"], ["Lenovo"], ["Sony"]]), id: "brand"%>
+        <hr>
+        <br>
+        <br>
+        <%= select_tag :ram, options_for_select([["Select RAM",""], ["2GB"], ["3GB"], ["4GB"], ["6GB"], ["8GB"], ["10GB"], ["12GB"]]), id: "ram"%>
+        <hr>
+        <br>
+        <br>
+        <%= select_tag :storage, options_for_select([["Select Storage",""], ["8GB"], ["16GB"], ["32GB"], ["64GB"], ["128GB"], ["256GB"], ["512GB"]]), id: "storage"%>
+        <hr>
       </td>
-      <td>
-          <%= select_tag :category, options_for_select([["Select a category",""]] + Product.all.map { |c| [c.category, c.category] } ), id: "category"%>
-
-      </td>
-      <td>
         <a href="/welcome/filter_search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
       </td>
-        </tr>
-        <tr>
-        </tr>
+      <hr>
+      <br>
+      <br>
 
-      </table>
   <h1>Your Search</h1>
+  <hr>
 </div>
   <div class="row">
     <% @products.each do |product| %>
