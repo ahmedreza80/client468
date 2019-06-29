@@ -2,12 +2,20 @@
 <br>
 
 <% if params[:search].blank? %>
+<% if request.url == 'https://safe-everglades-96667.herokuapp.com/welcome/search?search=&state=2&city=&area=' %>
+<div class="jumbotron">
+  <h1>Wolla!</h1>
+  <p>Your default location has been deleted click to add a new one.</p>
+  <p><a class="btn btn-primary btn-lg" href="/" role="button">Add a new Location</a></p>
+</div>
+<% else %>
    
 <div class="jumbotron">
   <h1>Wolla!</h1>
   <p>Your Location has been added and set to default to change it please click on the location icon.</p>
   <p><a class="btn btn-primary btn-lg" href="/" role="button">Home</a></p>
 </div>
+<% end %>
 <% else %>
 <br>
 <br>
@@ -30,6 +38,8 @@
   </div>
 </div>
 <% end %>
+
+
 <style>
 .add-to-cart {
   background: #ff9f1a;
