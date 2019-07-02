@@ -76,7 +76,7 @@
                                         <div class="select-wapper" style="display:none;">
                                         <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
                                         </div>
-                              <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1">
+                              <input type="text" placeholder="What are you looking for?" id="search" class="btn-group1">
                                        
                                         
                                         <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
@@ -98,7 +98,7 @@
                                         <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
                                         </div>
                                         
-                                        <input type="text" style="display:none;" placeholder="What are your looking for?" id="search" class="btn-group1">
+                                        <input type="text" style="display:none;" placeholder="What are you looking for?" id="search" class="btn-group1">
                                        
                                         
                                         <a href="/welcome/search" class="btn-form search-btn">Submit<i class="pe-7s-angle-right"></i></a>
@@ -615,7 +615,7 @@ function closeNav() {
                                         <div class="select-wapper" style="display:none;">
                                         <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
                                         </div>
-                              <input type="text" placeholder="What are your looking for?" id="search" class="btn-group1">
+                              <input type="text" placeholder="What are you looking for?" id="search" class="btn-group1">
                                        
                                         
                                         <a href="/welcome/search" class="btn-form search-btn">SEARCH<i class="pe-7s-angle-right"></i></a>
@@ -628,16 +628,16 @@ function closeNav() {
                                   
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                       <div class="select-wapper">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), id: "state"%>
+                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), required: true, id: "state"%>
                                         </div>
                                         <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), :id => 'city' %>
+                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), required: true, :id => 'city' %>
                                         </div>
                                         <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area', required: true %>
                                         </div>
                                         
-                                        <input type="text" style="display:none;" placeholder="What are your looking for?" id="search" class="btn-group1">
+                                        <input type="text" style="display:none;" placeholder="What are you looking for?" id="search" class="btn-group1">
                                        
                                         
                                         <a href="/welcome/search" class="btn-form search-btn">Submit<i class="pe-7s-angle-right"></i></a>
