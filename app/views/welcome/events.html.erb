@@ -443,6 +443,15 @@ $(".search-btn").on("click", function(e){
           var search = $("#search").val()
           window.location = $href + '?search=' + search+ "&state=" +state+ "&city="+ city
         })
+$(".search-btn").on("click", function(e){
+          e.preventDefault()
+          var $this = $(this);
+          var $href = $this.attr("href");
+          var state = $("#state").val()
+          var city = $("#city").val()
+          var search = $("#search").val()
+          window.location = $href + '?search=' + search+ "&state=" +state+ "&city="+ city
+        })
     </script>
                                 <% else %>
                                 <br>
