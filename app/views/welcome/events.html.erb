@@ -433,8 +433,34 @@
 }
 
     </style>
-     <script>
-$(".search-btn").on("click", function(e){
+<script>
+        $(window).scroll(function() {
+            // 100 = The point you would like to fade the nav in.
+
+            if ($(window).scrollTop() > 100) {
+
+                $('.fixed').addClass('is-sticky');
+
+            } else {
+
+                $('.fixed').removeClass('is-sticky');
+
+            };
+        });
+        var selectedCity;
+        $("select#state").change(function() {
+          var id_value_string = $(this).val();
+          if (id_value_string == "") {
+           $("select#city option").remove();
+           var row = "<option value=\"" + "" + "\">" + "city" + "</option>";
+           $(row).appendTo("select#city");
+          } else {
+           // Send the request and update city dropdown
+            getCitiesOfState(id_value_string)
+           
+          }
+        });
+        $(".search-btn").on("click", function(e){
           e.preventDefault()
           var $this = $(this);
           var $href = $this.attr("href");
