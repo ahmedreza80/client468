@@ -1,5 +1,33 @@
 
 <% if current_or_guest_user.search_area? %>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta name="author" content="Colorlib">
+    <meta name="description" content="#">
+    <meta name="keywords" content="#">
+    <!-- Page Title -->
+    <title>Nearclick</title>
+    <!-- Bootstrap CSS -->
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+
+    <!-- Simple line Icon -->
+    <link rel="stylesheet" href="/assets/simple-line-icons.css">
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="/assets/themify-icons.css">
+    <!-- Hover Effects -->
+    <link rel="stylesheet" href="/assets/set1.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
 <br>
 <br>
 <br
@@ -33,7 +61,86 @@
                   <% end %>
                   
                   <script>
-      $(".search-btn").on("click", function(e){
+        $(window).scroll(function() {
+            // 100 = The point you would like to fade the nav in.
+
+            if ($(window).scrollTop() > 100) {
+
+                $('.fixed').addClass('is-sticky');
+
+            } else {
+
+                $('.fixed').removeClass('is-sticky');
+
+            };
+        });
+        var selectedCity;
+        $("select#state").change(function() {
+          var id_value_string = $(this).val();
+          if (id_value_string == "") {
+           $("select#city option").remove();
+           var row = "<option value=\"" + "" + "\">" + "city" + "</option>";
+           $(row).appendTo("select#city");
+          } else {
+           // Send the request and update city dropdown
+            getCitiesOfState(id_value_string)
+           
+          }
+        });
+        $(".search-btn").on("click", function(e){
+          e.preventDefault()
+          var $this = $(this);
+          var $href = $this.attr("href");
+          var state = $("#state").val()
+          var city = $("#city").val()
+          var search = $("#search").val()
+          window.location = $href + '?search=' + search+ "&state=" +state+ "&city="+ city
+        })
+        function getCitiesOfState(val){
+        $.ajax({
+          dataType: "json",
+          cache: false,
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+          url: '/get_cities_by_state',
+          type: 'post',
+          data: {"state" : val},
+          timeout: 5000,
+          error: function(XMLHttpRequest, errorTextStatus, error) {
+           alert("Failed to submit : " + errorTextStatus + " ;" + error);
+          },
+          success: function(data) {
+           // Clear all options from city select
+           $("select#city option").remove();
+           //put in a empty default line
+           // Fill city select
+
+           var row = "<option value=\"" + "" + "\">" + "Select a city" + "</option>";
+           $(row).appendTo("select#city");
+           $.each(data, function(i, j) {
+            if(j.id == selectedCity){
+              row = "<option value=\"" + j.id + "\" selected>" + j.name + "</option>";
+            }else{
+              row = "<option value=\"" + j.id + "\">" + j.name + "</option>"; 
+            }
+            $(row).appendTo("select#city");
+           });
+          }
+         });
+        }
+        var selectedArea;
+        $("select#city").change(function() {
+          var city_id = $(this).val();
+          if (city_id == "") {
+           $("select#area option").remove();
+           var row = "<option value=\"" + "" + "\">" + "city" + "</option>";
+           $(row).appendTo("select#area");
+          } else {
+           // Send the request and update city dropdown
+            getAreasOfCity(city_id)
+           
+          }
+        });
+        $(".search-btn").on("click", function(e){
           e.preventDefault()
           var $this = $(this);
           var $href = $this.attr("href");
@@ -75,3 +182,8 @@
          });
         }
     </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
