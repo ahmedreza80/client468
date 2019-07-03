@@ -1376,6 +1376,8 @@ function closeNav() {
           .attr("placeholder", "Area")
           .addClass( "custom-input" )
           .css('width','105px')
+          .css('z-index','9999')
+          .css('position','relative')
           .autocomplete({
             delay: 0,
             minLength: 0,
