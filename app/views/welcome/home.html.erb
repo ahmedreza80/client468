@@ -67,14 +67,14 @@
                                 <% if current_or_guest_user.search_area? %>
                               <form class="form-wrap mt-4">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper" style="display:none; position: relative; z-index: 5000;">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), style: 'position: relative; z-index: 5000;', id: "state"%>
+                                      <div class="select-wapper" style="display:none;">
+                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), id: "state"%>
                                         </div>
-                                        <div class="select-wapper" style="display:none; position: relative; z-index: 5000;">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), style: 'position: relative; z-index: 5000;', :id => 'city' %>
+                                        <div class="select-wapper" style="display:none;">
+                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), :id => 'city' %>
                                         </div>
-                                        <div class="select-wapper" style="display:none; position: relative; z-index: 5000;">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), style: 'position: relative; z-index: 5000;', :id => 'area' %>
+                                        <div class="select-wapper" style="display:none;">
+                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
                                         </div>
                               <input type="text" placeholder="What are you looking for?" id="search" class="btn-group1">
                                        
@@ -88,13 +88,13 @@
                               <form class="form-wrap mt-4">
                                   
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper" style= "position: relative; z-index: 5000;">
+                                      <div class="select-wapper">
                                         <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), style: 'position: relative; z-index: 5000;', id: "state"%>
                                         </div>
-                                        <div class="select-wapper" style= "position: relative; z-index: 5000;">
+                                        <div class="select-wapper">
                                         <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), style: 'position: relative; z-index: 5000;', :id => 'city' %>
                                         </div>
-                                        <div class="select-wapper" style= "position: relative; z-index: 5000;">
+                                        <div class="select-wapper">
                                         <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), style: 'position: relative; z-index: 5000;', :id => 'area' %>
                                         </div>
                                         
