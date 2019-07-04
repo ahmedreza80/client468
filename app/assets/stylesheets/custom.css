@@ -33,19 +33,18 @@ div.select-wapper {
     position: relative;
     width: 120px;
     text-align: left;
-    z-index: 9999;
 }
 @media (max-width: 576px) {
     div.select-wapper{
         margin: auto;
         display: inline-block;
-        z-index: 9999;
 
     }
     input.custom-input {
         height: 5px;
         padding: 20px;
         margin-bottom:0px;
+        z-index: 9999;
 
     }
 }
