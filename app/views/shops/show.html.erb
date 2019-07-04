@@ -221,10 +221,12 @@
         </div>
             </div>
         </section>
+        <% if @shop.business == "Service Provider" %>
         <% if @shop.list? %>
         <div class="welcome_text">
                   <h6><%= @shop.name %>'s List Of services</h6>
                 </div>
+                <% end %>
                 <% end %>
         <% if mobile_device == "mobile" %>
                 <img src="<%= @shop.list %>" style="height:100%; width:100%;" alt="">

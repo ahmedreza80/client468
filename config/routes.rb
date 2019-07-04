@@ -478,6 +478,8 @@ get 'welcome/ashop'
   get 'welcome/ea16'
   get 'welcome/ea17'
   get 'welcome/ea18'
+  get 'welcome/ea19'
+  get 'welcome/ea20'
 
 
 

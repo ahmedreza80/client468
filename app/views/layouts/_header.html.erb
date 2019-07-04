@@ -414,32 +414,33 @@ function closeNav() {
   <br>
   <% if user_signed_in? %>
   <p style="text-align:center;">Welcome <%= current_user.username %></p>
-  <a href="/">Home</a>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :get %>
+  <a href="/"><i class="fa fa-home" aria-hidden="true" style="padding-right:15px;"></i>Home</a>
+  <%= link_to 'Sign Out', '<i class="fas fa-sign-out" aria-hidden="true" style="padding-right:15px;"></i>', destroy_user_session_path, method: :get %>
   <% else %>
   <p style="text-align:center;">Welcome Guest</p>
-  <a href="/">Home</a>
-  <a href="/users/sign_in">Sign In</a>
-  <a href="/users/sign_up">Register</a>
+  <a href="/"><i class="fa fa-home" aria-hidden="true" style="padding-right:15px;"></i>Home</a>
+  <a href="/users/sign_in"><i class="fas fa-sign-in-alt" style="padding-right:15px;"></i>Sign In</a>
+  <a href="/users/sign_up"><i class="fas fa-sign-in-alt" style="padding-right:15px;"></i>Register</a>
   <% end %>
 
   <% if current_user && current_user.is_agent? %>
-  <a href="/registeration_numbers">Agent Panel</a>
+  <a href="/registeration_numbers"><i class="fas fa-users-cog" aria-hidden="true" style="padding-right:15px;"></i>Agent Panel</a>
   <% end %>
-  <a href="/order_tracking">Track Your Order</a>
+  <a href="/order_tracking"><i class="fas fa-truck" aria-hidden="true" style="padding-right:15px;"></i>Track Your Order</a>
   <% if current_user&.shop %>
-  <a href="/products/new">Add Product</a>
+  <a href="/products/new"><i class="fas fa-plus-circle" aria-hidden="true" style="padding-right:15px;"></i>Add Product</a>
 
   <% else %>
   <a href="#">Wishlist</a>
   <% end %>
   <% if current_user&.shop %>
-  <%= link_to 'Manage Shop', current_user.shop, class: "btn btn-danger" %>
+  <%= link_to 'Manage Shop','<i class="fas fa-store-alt" aria-hidden="true" style="padding-right:15px;"></i>', current_user.shop %>
+  <%= link_to "Edit Shop",'<i class="fas fa-edit" aria-hidden="true" style="padding-right:15px;"></i>', edit_shop_path(shop) %>
 <% else %>
-                        <a href="/shops/new">Add Shop</a>
+                        <a href="/shops/new"><i class="fas fa-plus-circle" aria-hidden="true" style="padding-right:15px;"></i>Add Shop</a>
                         <% end %>
-  <a href="/welcome/about">About</a>
-  <a href="/welcome/contact">Contact</a>
+  <a href="/welcome/about"><i class="fas fa-info-circle" aria-hidden="true" style="padding-right:15px;"></i>About</a>
+  <a href="/welcome/contact"><i class="fas fa-envelope" style="padding-right:15px;"></i>Contact</a>
 </div>
 
 <% else %>
