@@ -12,6 +12,11 @@
 	<br>
 </div>	
 
+
+
+<br>
+<br>
+
 <div class="container">
   <% @numbers.each.with_index(1) do |number,i| %>
 		
@@ -33,6 +38,9 @@
 	 
 	  <div class="actions">
 	    <%= form.submit "Generate Code", style: 'font-size:20px;'%>
+      <br>
+      <br>
+      <a href="/highlights/new" class="btn-form text-centre" style="font-size:15px;">Add Highlights<i class="pe-7s-angle-right"></i></a>
 	  </div>
 	<% end %></td>
         
