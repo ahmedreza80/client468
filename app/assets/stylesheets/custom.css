@@ -12,7 +12,6 @@ a.custom-position{
     border: none;
     background: white;
     border-radius: unset;
-    z-index: 9999;
 }
 .custom-combobox-input {
     margin: 0;
