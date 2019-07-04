@@ -22,7 +22,7 @@ input.custom-input {
     height: 20px;
     padding: 24px;
     margin-left: 1px;
-    z-index: 9999;
+
 }
 ul.ui-autocomplete {
     width: 100px !important;
