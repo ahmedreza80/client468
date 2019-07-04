@@ -31,7 +31,7 @@ ul.ui-autocomplete {
 }
 label.custom-position {
     background-color: #ffffff;
-    z-index: 9999;
+
 }
 div.select-wapper {
     position: relative;
