@@ -590,7 +590,7 @@ function closeNav() {
   <% if current_user&.shop %>
   <a href="/products/new">Add Product</a>
   <%= link_to 'Manage Shop', current_user.shop %>
- <%= link_to "Edit Shop", edit_shop_path(current_user.shop) %>
+ 
   <% else %>
   <a href="#"><span><%= link_to pluralize(current_cart.items_count, ''), cart_path %></span> Your Cart</a>
 
@@ -598,6 +598,9 @@ function closeNav() {
   <a href="/order_tracking">Track Your Order</a>
   <% if current_user && current_user.is_agent? %>
   <a href="/registeration_numbers">Agent Panel</a>
+  <% end %>
+  <% if current_user.shop %>
+  <%= link_to "Edit Shop", edit_shop_path(current_user.shop) %>
   <% end %>
   <a href="/welcome/about">About</a>
   <a href="/welcome/contact">Contact</a>

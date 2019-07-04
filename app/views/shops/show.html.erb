@@ -206,6 +206,10 @@
                     <li><a href="#"><i class="lnr lnr-envelope"></i> <%= @shop.email %></a></li>
                     <li><a href="#"><i class="lnr lnr-home"></i> <%= @shop.location %></a></li>
                     <li><i class="lnr lnr-laptop"></i><a href="http://<%= @shop.web%>"><%=@shop.web%></a></li>
+                    <div class="action">
+              <% if current_user == @product.user %>
+          <%= link_to "Edit Your Shop", edit_shop_path(@shop) %>
+          <% end %>
                     
                   </ul>
                   <ul class="list personal_social">
