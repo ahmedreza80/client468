@@ -43,7 +43,7 @@ div.select-wapper {
     div.select-wapper{
         margin: auto;
         display: inline-block;
-        z-index: 9999;
+
     }
     input.custom-input {
         height: 5px;
