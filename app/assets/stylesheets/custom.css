@@ -16,7 +16,7 @@ a.custom-position{
 .custom-combobox-input {
     margin: 0;
     padding: 5px 10px;
-    z-index: 9999;
+
 }
 input.custom-input {
     height: 20px;
