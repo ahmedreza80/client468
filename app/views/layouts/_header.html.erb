@@ -415,9 +415,7 @@ function closeNav() {
   <% if user_signed_in? %>
   <p style="text-align:center;">Welcome <%= current_user.username %></p>
   <a href="/"><i class="fa fa-home" aria-hidden="true" style="padding-right:15px;"></i>Home</a>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :get  do %>
-  <i class="fas fa-sign-out" aria-hidden="true" style="padding-right:15px;"></i>
-  <% end %>
+  <i class="fas fa-sign-out" aria-hidden="true" style="padding-right:15px;"></i> <%= link_to 'Sign Out', destroy_user_session_path, method: :get %>
   <% else %>
   <p style="text-align:center;">Welcome Guest</p>
   <a href="/"><i class="fa fa-home" aria-hidden="true" style="padding-right:15px;"></i>Home</a>
@@ -436,12 +434,8 @@ function closeNav() {
   <a href="#">Wishlist</a>
   <% end %>
   <% if current_user&.shop %>
-  <%= link_to 'Manage Shop', current_user.shop do %>
-  <i class="fas fa-store-alt" aria-hidden="true" style="padding-right:15px;"></i>
-  <% end %>
-  <%= link_to "Edit Shop", edit_shop_path(shop) do %>
-  <i class="fas fa-edit" aria-hidden="true" style="padding-right:15px;"></i>
-  <% end %>
+  <i class="fas fa-store-alt" aria-hidden="true" style="padding-right:15px;"></i> <%= link_to 'Manage Shop', current_user.shop %>
+  <i class="fas fa-edit" aria-hidden="true" style="padding-right:15px;"></i> <%= link_to "Edit Shop", edit_shop_path(shop) %>
 <% else %>
                         <a href="/shops/new"><i class="fas fa-plus-circle" aria-hidden="true" style="padding-right:15px;"></i>Add Shop</a>
                         <% end %>
