@@ -12,39 +12,44 @@ a.custom-position{
     border: none;
     background: white;
     border-radius: unset;
+    z-index: 9999;
 }
 .custom-combobox-input {
     margin: 0;
     padding: 5px 10px;
+    z-index: 9999;
 }
 input.custom-input {
     height: 20px;
     padding: 24px;
     margin-left: 1px;
+    z-index: 9999;
 }
 ul.ui-autocomplete {
     width: 100px !important;
     background: #ffffff;
+    z-index: 9999;
 }
 label.custom-position {
     background-color: #ffffff;
+    z-index: 9999;
 }
 div.select-wapper {
     position: relative;
     width: 120px;
     text-align: left;
+    z-index: 9999;
 }
 @media (max-width: 576px) {
     div.select-wapper{
         margin: auto;
         display: inline-block;
-
+        z-index: 9999;
     }
     input.custom-input {
         height: 5px;
         padding: 20px;
         margin-bottom:0px;
         z-index: 9999;
-
     }
 }
