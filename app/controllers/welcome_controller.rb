@@ -133,6 +133,12 @@ class WelcomeController < ApplicationController
   def ea18
     @products = Product.all
   end
+  def ea19
+    @products = Product.all
+  end
+  def ea20
+    @products = Product.all
+  end
 
 def wed1
     @products = Product.all
