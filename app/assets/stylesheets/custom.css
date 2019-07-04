@@ -27,7 +27,7 @@ input.custom-input {
 ul.ui-autocomplete {
     width: 100px !important;
     background: #ffffff;
-   
+    z-index: 9999;
 }
 label.custom-position {
     background-color: #ffffff;
@@ -37,7 +37,7 @@ div.select-wapper {
     position: relative;
     width: 120px;
     text-align: left;
-    z-index: 9999;
+
 }
 @media (max-width: 576px) {
     div.select-wapper{
