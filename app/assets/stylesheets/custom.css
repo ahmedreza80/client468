@@ -33,6 +33,7 @@ div.select-wapper {
     position: relative;
     width: 120px;
     text-align: left;
+    z-index: 9999;
 }
 @media (max-width: 576px) {
     div.select-wapper{
