@@ -27,7 +27,7 @@ input.custom-input {
 ul.ui-autocomplete {
     width: 100px !important;
     background: #ffffff;
-    z-index: 9999;
+   
 }
 label.custom-position {
     background-color: #ffffff;
