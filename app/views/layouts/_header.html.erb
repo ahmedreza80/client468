@@ -93,16 +93,16 @@ function closeNav() {
                         <nav class="navbar navbar-expand-lg navbar-light">
 
                            
-                            <i class="far fa-user-circle" onclick="openNav()" style="font-size: 30px; color:#ffffff;"></i>
+                            <i class="far fa-user-circle"></i>
+                            <img src="/assets/user.png"  onclick="openNav()" style="height:32px; width:32px;">
 
 <a href="#">
-
-            <i class="fas fa-shopping-bag" style="font-size: 30px; color:#ffffff;"></i><%= link_to pluralize(current_cart.items_count, ''), cart_path, class: "dot" %>
+   
+            <img src="https://cdn4.iconfinder.com/data/icons/online-shopping-31/64/shopping-commerce-supermarket-cart-store-online-512.png" style="height:32px; width:32px;"  alt="ICON" <%= link_to pluralize(current_cart.items_count, ''), cart_path, class: "dot" %>>
                            </a>
                             <a class="navbar-brand" style="font-size:20px;" href="/welcome/home">NearClick</a>
                             
-                          
-                          <i class="fas fa-map-marker-alt" data-toggle="modal" data-target="#myModalse" style="font-size: 30px; color:#ffffff;"></i>
+                          <img src="/assets/mi.png" data-toggle="modal" data-target="#myModalse" style="height:32px; width:32px;">
 
 
 
@@ -111,8 +111,8 @@ function closeNav() {
                         
 
                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-ellipsis-v" style="font-size: 30px; color:#ffffff; z-index: 10000;
-        position: relative;"></i>
+                <img src="/assets/dots.png" style="height:32px; width:32px; z-index: 10000;
+        position: relative;">
               </button>
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown" >
                                 <ul class="navbar-nav">
