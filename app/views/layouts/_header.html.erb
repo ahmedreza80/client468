@@ -96,7 +96,7 @@ function closeNav() {
                             <img src="/assets/user.png"  onclick="openNav()" style="height:40px; width:40px;">
 
 <a href="#">
- <span class="dot"><%= link_to pluralize(current_cart.items_count, ''), cart_path, class: "dot" %></span>
+ <%= link_to pluralize(current_cart.items_count, ''), cart_path, class: "dot" %>
             <img src="https://cdn4.iconfinder.com/data/icons/online-shopping-31/64/shopping-commerce-supermarket-cart-store-online-512.png" style="height:40px; width:40px;"  alt="ICON">
                            </a>
                             <a class="navbar-brand" style="font-size:20px;" href="/welcome/home">NearClick</a>
