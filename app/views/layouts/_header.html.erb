@@ -2,23 +2,12 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <style>
-  .header-icons-noti {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 16px;
-  height: 16px;
+.dot {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
   border-radius: 50%;
-  background-color: #111111;
-  color: white;
-  font-size: 12px;
-  position: relative;
-  top: 0;
-
+  display: inline-block;
 }
 </style>
 <% if mobile_device == "mobile" %>
@@ -107,7 +96,7 @@ function closeNav() {
                             <img src="/assets/user.png"  onclick="openNav()" style="height:40px; width:40px;">
 
 <a href="#">
- <span class="header-icons-noti"><%= link_to pluralize(current_cart.items_count, ''), cart_path %></span>
+ <span class="dot"><%= link_to pluralize(current_cart.items_count, ''), cart_path %></span>
             <img src="https://cdn4.iconfinder.com/data/icons/online-shopping-31/64/shopping-commerce-supermarket-cart-store-online-512.png" style="height:40px; width:40px;"  alt="ICON">
                            </a>
                             <a class="navbar-brand" style="font-size:20px;" href="/welcome/home">NearClick</a>
