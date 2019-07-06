@@ -231,13 +231,13 @@
                   <h6><%= @shop.name %>'s List Of services</h6>
                 </div>
                 <% end %>
-                <% end %>
+                
         <% if mobile_device == "mobile" %>
                 <img src="<%= @shop.list %>" style="height:100%; width:100%;" alt="">
                 <% else %>
                 <img src="<%= @shop.list %>" style="height:520px; width:500px;" alt="">
                 <% end %>
-
+<% end %>
         <!--================End Home Banner Area =================-->
         <% if @shop.business == "Service Provider" %>
 
@@ -326,28 +326,39 @@
 
 
 
-              <% @shop.products.each do |product| %>
+              
 
-          <div class="col-md-4">
-            <div class="blog-entry">
-              <a href="#" class="img img-2"><img src="<%= product.image %>" style="width:300px; height:250px;"> </a>
-              <div class="text text-2 pt-2 mt-3">
-                <span class="category mb-3 d-block"><a href="#"><%= product.name %></a></span>
-                <h3 class="mb-4"><a href="#"><%= product.category %></a></h3>
-                <h3 class="mb-4"><a href="#">Rs: <%= product.price %></a></h3>
-                <p class="mb-4"><%= product.description %></p>
-                
-                <div class="meta-wrap align-items-center">
-                  
-                  <div class="half">
-                
-                    <p><%= link_to "View Product", product, class: "btn btn-success" %></p>
-                  </div>
-                </div>
+
+
+              <div class="row">
+                <% @shop.products.each do |product| %>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= product.name %></a></h4>
+        <p class="desc"><%= product.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= product.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
+      <div class="price-wrap h5">
+        <% if product.offerprice? %>
+        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
+        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
+        <% else %>
+        <span class="price-new"><%= product.price %></span>
+         <% end %>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
               </div>
-            </div>
-          </div>
-          <% end %>
+          
         </div>
       </div>
     </section>
@@ -365,3 +376,37 @@
        
     </body>
 </html>
+
+<style>
+  .card-product .img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 220px;
+    text-align: center;
+}
+.card-product .img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+.card-product .info-wrap {
+    overflow: hidden;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+.card-product .bottom-wrap {
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.label-rating { margin-right:10px;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.card-product .price-old {
+    color: #999;
+}
+</style>

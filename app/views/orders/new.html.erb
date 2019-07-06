@@ -95,7 +95,7 @@
                                                         <div class="form-group">
                                                             <div class="d-flex justify-content-between">
                                                          
-                                                          <%= f.text_field :first_name, :class => 'lala', :value => current_user.username, placeholder: "Your First Name" %>
+                                                          <%= f.text_field :first_name, :class => 'lala', :value => current_or_guest_user.username, placeholder: "Your First Name" %>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -107,19 +107,19 @@
                                                     <div class="form-group">
                                                             <div class="d-flex justify-content-between">
                                                           
-                                                          <%= f.text_field :mobile_number, :class => 'lala', :value => current_user.phone, placeholder: "Your Valid Mobile Number" %>
+                                                          <%= f.text_field :mobile_number, :class => 'lala', :value => current_or_guest_user.phone, placeholder: "Your Valid Mobile Number" %>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                             <div class="d-flex justify-content-between">
                                                         
-                                                          <%= f.text_field :email, :class => 'lala', :value => current_user.email, placeholder: "Your Email Address" %>
+                                                          <%= f.text_field :email, :class => 'lala', :value => current_or_guest_user.email, placeholder: "Your Email Address" %>
                                                         </div>
                                                     </div>
                                                         <div class="form-group">
                                                                 <div class="d-flex justify-content-between">
                                                          
-                                                          <%= f.text_field :delivery_address, :class => 'lala', :value => current_user.location, placeholder: "Complete Delivery Addresss" %>
+                                                          <%= f.text_field :delivery_address, :class => 'lala', :value => current_or_guest_user.location, placeholder: "Complete Delivery Addresss" %>
                                                         </div>
                                                         </div>
 
@@ -180,7 +180,7 @@
                                                     <div class="jumbotron">
                                                       <div class="form-group">
                                                             <div class="d-flex justify-content-between">
-                                                          <%= f.text_field :pincode, :class => 'lala', :value => current_user.pincode, placeholder: "Pincode" %>
+                                                          <%= f.text_field :pincode, :class => 'lala', :value => current_or_guest_user.pincode, placeholder: "Pincode" %>
                                                         </div>
                                                     </div>
                                                     </div>

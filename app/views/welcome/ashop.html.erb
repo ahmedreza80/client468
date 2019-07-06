@@ -1,35 +1,63 @@
-<br>
-<br>
+
 <div class="container" style=" text-align:center; padding-top: 100px">
 	<div class="center" style="text-align:center;">
   <h1>All Shops In Your Area</h1>
 </div>
+<hr>
   <div class="row">
-      	<% @shops.each do |shop| %>
+                <% @shops.each do |shop| %>
         <% if shop.area == current_or_guest_user.search_area %>
-
-	    <div class="col-md-3" >
-	     <img src="<%= shop.imageshop %>" style="height:100px; width:100px;" alt="Park">
-	     <figcaption><b><%= shop.name %></b><figcaption>
-	     <figcaption><%= shop.description %><figcaption>
-	     	<%= link_to "View shop", shop, class: "add-to-cart btn btn-default" %>
-	    </div>
-    <% end %>
-    <% end %>
-  </div>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= shop.imageshop %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= shop.name %></a></h4>
+        <p class="desc"><%= shop.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= shop.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Shop", shop, class: "btn btn-sm btn-primary float-right" %>
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
+<% end %>
+              </div>
 </div>
 
 <style>
-.add-to-cart {
-  background: #ff9f1a;
+  .card-product .img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 220px;
+    text-align: center;
+}
+.card-product .img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+.card-product .info-wrap {
+    overflow: hidden;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+.card-product .bottom-wrap {
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
 
-  border: none;
-  text-transform: UPPERCASE;
-  font-weight: bold;
-  color: #fff;
-  -webkit-transition: background .3s ease;
-          transition: background .3s ease; }
-  .add-to-cart:hover {
-    background: #b36800;
-    color: #fff; }
+.label-rating { margin-right:10px;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.card-product .price-old {
+    color: #999;
+}
 </style>

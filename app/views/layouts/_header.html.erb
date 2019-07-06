@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
 <% if mobile_device == "mobile" %>
 <style>
 .sidenav {
@@ -584,23 +587,34 @@ function closeNav() {
   <br>
   <% if user_signed_in? %>
   <p style="text-align:center;">Welcome <%= current_user.username %></p>
+  <a href="/"><i class="fa fa-home" aria-hidden="true" style="padding-right:15px;"></i>Home</a>
+  <i class="fas fa-sign-out" aria-hidden="true" style="padding-right:15px;"></i> <%= link_to 'Sign Out', destroy_user_session_path, method: :get %>
   <% else %>
   <p style="text-align:center;">Welcome Guest</p>
+  <a href="/"><i class="fa fa-home" aria-hidden="true" style="padding-right:15px;"></i>Home</a>
+  <a href="/users/sign_in"><i class="fas fa-sign-in-alt" style="padding-right:15px;"></i>Sign In</a>
+  <a href="/users/sign_up"><i class="fas fa-sign-in-alt" style="padding-right:15px;"></i>Register</a>
+  <% end %>
+
+  <% if current_user && current_user.is_agent? %>
+  <a href="/registeration_numbers"><i class="fas fa-users-cog" aria-hidden="true" style="padding-right:15px;"></i>Agent Panel</a>
+  <% end %>
+  <a href="/order_tracking"><i class="fas fa-truck" aria-hidden="true" style="padding-right:15px;"></i>Track Your Order</a>
+  <% if current_user&.shop %>
+  <a href="/products/new"><i class="fas fa-plus-circle" aria-hidden="true" style="padding-right:15px;"></i>Add Product</a>
+
+  <% else %>
+  <a href="#" style="display: none;">Wishlist</a>
   <% end %>
   <% if current_user&.shop %>
-  <a href="/products/new">Add Product</a>
-  <%= link_to 'Manage Shop', current_user.shop %>
- 
-  <% else %>
-  <a href="#"><span><%= link_to pluralize(current_cart.items_count, ''), cart_path %></span> Your Cart</a>
+  <i class="fas fa-store-alt" aria-hidden="true" style="padding-right:15px;"></i> <%= link_to 'Manage Shop', current_user.shop %>
 
-  <% end %>
-  <a href="/order_tracking">Track Your Order</a>
-  <% if current_user && current_user.is_agent? %>
-  <a href="/registeration_numbers">Agent Panel</a>
-  <% end %>
-  <a href="/welcome/about">About</a>
-  <a href="/welcome/contact">Contact</a>
+<% else %>
+                        <a href="/shops/new"><i class="fas fa-plus-circle" aria-hidden="true" style="padding-right:15px;"></i>Add Shop</a>
+                        <% end %>
+  <a href="/welcome/about"><i class="fas fa-info-circle" aria-hidden="true" style="padding-right:15px;"></i>About</a>
+  <a href="/welcome/contact"><i class="fas fa-envelope" style="padding-right:15px;"></i>Contact</a>
+</div>
 </div>
 
 <% end %>
