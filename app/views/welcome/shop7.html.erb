@@ -15,25 +15,56 @@
 
           <% @shops.each do |shop| %>
           <% if shop.category == "Health" %>
-          <div class="col col-md-4 col-sm-6">
-              <div class="product-grid" style="background:#f3f4f7;">
-                <div class="image">
-                    <img src= "<%= shop.imageshop %>" alt="<%= shop.name %> 's image" style="height:200px;" class="img-fluid">
-                    <span class="overlay">
-                        <span class="product-details">
-                           <%= link_to "View Details", shop, class: "linky" %>
+          <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= shop.imageshop %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= shop.name %></a></h4>
+        <p class="desc"><%= shop.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= shop.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Shop", shop, class: "btn btn-sm btn-primary float-right" %>
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<style>
+  .card-product .img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 220px;
+    text-align: center;
+}
+.card-product .img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+.card-product .info-wrap {
+    overflow: hidden;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+.card-product .bottom-wrap {
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
 
-                        </span>
-                    </span>
-                </div>
-                <div class="product-discription py-3">
-                <h4 class="text-center"><%= shop.name %></h4>
-                <p class="text-center"><small><%= shop.description %></small></p>
-             
-                </div>
-              
-              </div>
-          </div>
+.label-rating { margin-right:10px;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.card-product .price-old {
+    color: #999;
+}
+</style>
+
           <% end %>
           <% end %>
 
