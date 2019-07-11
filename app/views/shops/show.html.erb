@@ -35,6 +35,14 @@
 <html lang="en">
 
     <body>
+      <% if @shop.status == "Disable" %>
+      <div class="well">
+        <div class="text-center">
+          <h3><b>This Shop is Unaccesiable</b></h3>
+          <p>You can't access this shop right now as it has been disabled temporarily by the management. If you are the shop owner please <a href="/welcome/contact">contact us.</a></p>
+        </div>
+      </div>
+      <% else %>
       
         <style>
 
@@ -373,7 +381,7 @@
       }
     });
   </script> 
-       
+       <% end %>
     </body>
 </html>
 

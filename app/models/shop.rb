@@ -9,7 +9,13 @@ class Shop < ApplicationRecord
 	acts_as_commontable
 
 
-
+def status_enum
+    # Do not select any value, or add any blank field. RailsAdmin will do it for you.
+    ['Active', 'Disable']
+    # alternatively
+    # { green: 0, white: 1 }
+    # [ %w(Green 0), %w(White 1)]
+  end
 
 
 	def overall_ratings(shop)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190626064254) do
+ActiveRecord::Schema.define(version: 20190710185626) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -239,6 +239,7 @@ ActiveRecord::Schema.define(version: 20190626064254) do
     t.string "linkedin"
     t.string "gst"
     t.string "list"
+    t.string "status"
     t.index ["registeration_number_id"], name: "index_shops_on_registeration_number_id"
     t.index ["user_id"], name: "index_shops_on_user_id"
   end

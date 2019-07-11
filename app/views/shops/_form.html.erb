@@ -126,6 +126,10 @@ $(function() {
 
       <label for="job">Linkedin:</label>
       <%= form.text_field :linkedin, id: :shop_linkedin, placeholder: "Link to your linkedin page *Not Mandatory*" %>
+
+      <div class="form-group" style="display: none;">
+                                                            <%= form.select :status, ['Select shop status','Active', 'Disable'], :id => 'category' %>
+                                                    </div>
     </fieldset>
     
     
