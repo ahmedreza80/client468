@@ -664,7 +664,7 @@ function closeNav() {
 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <% @highlights.each do |highlight| %>
-    <% if highlight.area == current_or_guest_user.search_area %>
+    <% if highlight.area == current_or_guest_user.search_area or highlight.state == current_or_guest_user.search_state or highlight.city == current_or_guest_user.search_city %>
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

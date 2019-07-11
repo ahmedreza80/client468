@@ -78,6 +78,8 @@ get '/cart', to: 'order_items#index'
 
 
 get 'welcome/ashop'
+get 'welcome/sshop'
+get 'welcome/cshop'
 
 
 

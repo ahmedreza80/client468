@@ -813,6 +813,12 @@ def hard1
   def ashop
     @shops =Shop.all
   end
+  def sshop
+    @shops =Shop.all
+  end
+  def cshop
+    @shops =Shop.all
+  end
 def search
     # I've just copy-paste your code with database querying
     # It should be optimized with scopes at model level,

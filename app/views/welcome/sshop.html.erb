@@ -1,14 +1,12 @@
 
 <div class="container" style=" text-align:center; padding-top: 100px">
 	<div class="center" style="text-align:center;">
-  <h1>All Shops In Your Area</h1>
-  <a href="/welcome/cshop" class="btn btn-sm btn-primary float-right">Browse Shop City wise</a>
-  <a href="/welcome/sshop" class="btn btn-sm btn-primary float-left">Browse Shop State wise</a>
+  <h1>All Shops In Your State</h1>
 </div>
 <hr>
   <div class="row">
                 <% @shops.each do |shop| %>
-        <% if shop.area == current_or_guest_user.search_area %>
+        <% if shop.state == current_or_guest_user.search_state %>
                 <div class="col-md-4">
   <figure class="card card-product">
     <div class="img-wrap"><img src="<%= shop.imageshop %>" style="width:300px; height:250px;"></div>

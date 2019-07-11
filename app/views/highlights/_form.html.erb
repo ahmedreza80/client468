@@ -34,6 +34,8 @@
 <legend><span class="number">2</span> Details</legend>
 <%= form.text_field :date, id: :highlight_date, placeholder: "The Date Of The Event" %>
     <%= form.text_field :place, id: :highlight_place, placeholder: "Venue Of The Event" %>
+    <%= form.select :state, options_for_select([["Select a State",""]] + State.all.map { |c| [c.name, c.id] }, selected:  highlight.state),{}, :id => 'state' %>
+    <%= form.select :city, options_for_select([["Select a City / District",""]] + City.all.map { |c| [c.name, c.id] }, selected:  highlight.city),{}, :id => 'city' %>
 <%= form.select :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected:  highlight.area),{}, :id => 'area' %>
 
 
