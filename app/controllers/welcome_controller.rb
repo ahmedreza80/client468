@@ -840,6 +840,6 @@ def search
 
   def filter_search
     # byebug
-    @products = Product.where('(category LIKE ?  and price between ? and ?)', "%#{params[:category]}%",params[:price][0..1],params[:price][4..7])
+    @products = Product.where('(category LIKE ? and brand LIKE ? and ram LIKE ? and storage LIKE ? and price between ? and ?)', "%#{params[:storage]}%","%#{params[:ram]}%","%#{params[:brand]}%","%#{params[:category]}%",params[:price][0..1],params[:price][4..7])
   end
 end

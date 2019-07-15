@@ -188,7 +188,7 @@
               <div class="d-flex">
                 <% if mobile_device == "mobile" %>
                 <script src="/assets/jquery.raty.js"></script>
-                <img src="<%= @shop.imageshop %>" style="height:100%; width:100%;" alt="">
+                <img src="<%= @shop.imageshop %>" style="height:70%; width:70%;" alt="">
                 <% else %>
                 <img src="<%= @shop.imageshop %>" style="height:520px; width:500px;" alt="">
                 <% end %>
@@ -233,23 +233,480 @@
         </div>
             </div>
         </section>
-        <% if @shop.business == "Service Provider" %>
-        <% if @shop.list? %>
-        <div class="welcome_text">
-                  <h6><%= @shop.name %>'s List Of services</h6>
-                </div>
-                <% end %>
-                
-        <% if mobile_device == "mobile" %>
-                <img src="<%= @shop.list %>" style="height:100%; width:100%;" alt="">
-                <% else %>
-                <img src="<%= @shop.list %>" style="height:520px; width:500px;" alt="">
-                <% end %>
-<% end %>
         <!--================End Home Banner Area =================-->
-        <% if @shop.business == "Service Provider" %>
+        <% if @shop.business == "Products Based Business" %>
+        <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 heading-section text-center">
+            <h2 class="mb-4">Products</h2>
+            <p>All the products listed here are directly sold by <%= @shop.name %> and NearClick is just there delivery partner, we deliver the product as it is without opening the package.</p>
+          </div>
+        </div>
+        <div class="row">
 
-        <section class="welcome_area p_120">
+              <div class="row">
+                <% @shop.products.each do |product| %>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= product.name %></a></h4>
+        <p class="desc"><%= product.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= product.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
+      <div class="price-wrap h5">
+        <% if product.offerprice? %>
+        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
+        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
+        <% else %>
+        <span class="price-new"><%= product.price %></span>
+         <% end %>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
+              </div>
+          
+        </div>
+      </div>
+    </section>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if @shop.category == "Tutors" %>
+        <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 heading-section text-center">
+            <h2 class="mb-4">Subjects</h2>
+            <p>All the Subjects listed here are directly taught by <%= @shop.name %> and NearClick is just there Permotional partner.</p>
+          </div>
+        </div>
+        <div class="row">
+
+              <div class="row">
+                <% @shop.products.each do |product| %>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= product.name %></a></h4>
+        <p class="desc"><%= product.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= product.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
+      <div class="price-wrap h5">
+        <% if product.offerprice? %>
+        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
+        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
+        <% else %>
+        <span class="price-new"><%= product.price %></span>
+         <% end %>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
+              </div>
+          
+        </div>
+      </div>
+    </section>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if @shop.category == "Business & Tax" %>
+        <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 heading-section text-center">
+            <h2 class="mb-4">Services</h2>
+            <p>All the Services listed here are directly Provided by <%= @shop.name %> and NearClick is just there Permotional partner.</p>
+          </div>
+        </div>
+        <div class="row">
+
+              <div class="row">
+                <% @shop.products.each do |product| %>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= product.name %></a></h4>
+        <p class="desc"><%= product.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= product.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
+      <div class="price-wrap h5">
+        <% if product.offerprice? %>
+        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
+        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
+        <% else %>
+        <span class="price-new"><%= product.price %></span>
+         <% end %>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
+              </div>
+          
+        </div>
+      </div>
+    </section>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if @shop.category == "Salon" %>
+        <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 heading-section text-center">
+            <h2 class="mb-4">Services</h2>
+            <p>All the Services listed here are directly Provided by <%= @shop.name %> and NearClick is just there Permotional partner.</p>
+          </div>
+        </div>
+        <div class="row">
+
+              <div class="row">
+                <% @shop.products.each do |product| %>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= product.name %></a></h4>
+        <p class="desc"><%= product.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= product.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
+      <div class="price-wrap h5">
+        <% if product.offerprice? %>
+        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
+        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
+        <% else %>
+        <span class="price-new"><%= product.price %></span>
+         <% end %>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
+              </div>
+          
+        </div>
+      </div>
+    </section>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if @shop.category == "Home Service & Repair" %>
+        <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 heading-section text-center">
+            <h2 class="mb-4">Services</h2>
+            <p>All the Services listed here are directly Provided by <%= @shop.name %> and NearClick is just there Permotional partner.</p>
+          </div>
+        </div>
+        <div class="row">
+
+              <div class="row">
+                <% @shop.products.each do |product| %>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= product.name %></a></h4>
+        <p class="desc"><%= product.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= product.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
+      <div class="price-wrap h5">
+        <% if product.offerprice? %>
+        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
+        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
+        <% else %>
+        <span class="price-new"><%= product.price %></span>
+         <% end %>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
+              </div>
+          
+        </div>
+      </div>
+    </section>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if @shop.category == "Hotels" %>
+        <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 heading-section text-center">
+            <h2 class="mb-4">Rooms</h2>
+            <p>All the Rooms listed here are directly Provided by <%= @shop.name %> and NearClick is just there Permotional partner.</p>
+          </div>
+        </div>
+        <div class="row">
+
+              <div class="row">
+                <% @shop.products.each do |product| %>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= product.name %></a></h4>
+        <p class="desc"><%= product.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= product.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
+      <div class="price-wrap h5">
+        <% if product.offerprice? %>
+        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
+        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
+        <% else %>
+        <span class="price-new"><%= product.price %></span>
+         <% end %>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
+              </div>
+          
+        </div>
+      </div>
+    </section>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if @shop.category == "Restraunts" %>
+        <section class="ftco-section" style="padding: 10px;">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-7 heading-section text-center">
+            <h2 class="mb-4">Menu</h2>
+            <p>All the Food Items listed here are directly Provided by <%= @shop.name %> and NearClick is just there Delivery partner, we deliver the items as it is without opening the package.</p>
+          </div>
+        </div>
+        <div class="row">
+
+              <div class="row">
+                <% @shop.products.each do |product| %>
+                <div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title"><a href="#"><%= product.name %></a></h4>
+        <p class="desc"><%= product.description %></p>
+        <div class="rating-wrap">
+          <div class="label-rating">Category: <%= product.category %></div>
+          
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
+      <div class="price-wrap h5">
+        <% if product.offerprice? %>
+        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
+        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
+        <% else %>
+        <span class="price-new"><%= product.price %></span>
+         <% end %>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<% end %>
+              </div>
+          
+        </div>
+      </div>
+    </section>
+<% end %>
+
+
+
+
+
+
+
+
+<hr>
+
+
+<section class="welcome_area p_120" style="padding: 10px;">
           <div class="container">
             <div class="row welcome_inner">
               <div class="col-lg-6">
@@ -318,60 +775,6 @@
             </div>
           </div>
         </section>
-        <% else %>
-        
-<section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-2">
-          <div class="col-md-7 heading-section text-center">
-            <h2 class="mb-4">Products</h2>
-            <p>All the products listed here are directly sold by <%= @shop.name %> and NearClick is just there delivery partner, we deliver the product as it is without opening the package.</p>
-          </div>
-        </div>
-        <div class="row">
-
-
-
-
-
-              
-
-
-
-              <div class="row">
-                <% @shop.products.each do |product| %>
-                <div class="col-md-4">
-  <figure class="card card-product">
-    <div class="img-wrap"><img src="<%= product.image %>" style="width:300px; height:250px;"></div>
-    <figcaption class="info-wrap">
-        <h4 class="title"><a href="#"><%= product.name %></a></h4>
-        <p class="desc"><%= product.description %></p>
-        <div class="rating-wrap">
-          <div class="label-rating">Category: <%= product.category %></div>
-          
-        </div> <!-- rating-wrap.// -->
-    </figcaption>
-    <div class="bottom-wrap">
-      <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
-      <div class="price-wrap h5">
-        <% if product.offerprice? %>
-        <span class="price-new">Rs: <%= product.offerprice %></span> <del class="price-old">Rs: <%= product.price %></del>
-        <div class="label-rating"><%= number_to_percentage(product.percentage_off, :precision => 2) %> Off</div>
-        <% else %>
-        <span class="price-new"><%= product.price %></span>
-         <% end %>
-      </div> <!-- price-wrap.// -->
-    </div> <!-- bottom-wrap.// -->
-  </figure>
-</div> <!-- col // -->
-<% end %>
-              </div>
-          
-        </div>
-      </div>
-    </section>
-<% end %>
-
        <script>
       $('.star-rating').raty({
         path: '/assets/',
@@ -390,7 +793,7 @@
     border-radius: 3px 3px 0 0;
     overflow: hidden;
     position: relative;
-    height: 220px;
+    height: 150px;
     text-align: center;
 }
 .card-product .img-wrap img {
@@ -400,11 +803,9 @@
 }
 .card-product .info-wrap {
     overflow: hidden;
-    padding: 15px;
     border-top: 1px solid #eee;
 }
 .card-product .bottom-wrap {
-    padding: 15px;
     border-top: 1px solid #eee;
 }
 
