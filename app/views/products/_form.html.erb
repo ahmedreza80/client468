@@ -27,7 +27,9 @@
 <label for="job" style="color:#000;">Images:</label>
 <%= form.file_field :image, id: :product_image %>
 <%= form.file_field :imagetwo, id: :product_image %>
-<%= form.file_field :imagethree, id: :product_image %>   
+<%= form.file_field :imagethree, id: :product_image %> 
+<%= form.file_field :imagefour, id: :product_image %> 
+<%= form.file_field :imagefive, id: :product_image %>   
 </fieldset>
 <fieldset>
 <legend><span class="number">2</span> Additional Info</legend>
@@ -41,8 +43,17 @@
 </fieldset> -->
 <select id="category_list" name="product[category]">
 </select>
-
+<label for="job" style="color:#000;">Sub Categories:</label>
 <select id="sub_category_list" name="product[sub_category]">
+</select>
+<label for="job" style="color:#000;">Select A Brand:</label>
+<select id="brand_list" name="product[brand]">
+</select>
+<label for="job" style="color:#000;">Select A RAM:</label>
+<select id="ram_list" name="product[ram]">
+</select>
+<label for="job" style="color:#000;">Select A Storage:</label>
+<select id="storage_list" name="product[storage]">
 </select>
 
 <table id="choices">
@@ -649,11 +660,72 @@
             <td id="Mobile Phones"></td>
             <td id="computer"></td>
         </tr> 
+<tr id="Mobile">
 
+        </tr> 
 
 
 
 <tr id="Old Items" style="display:none">
+        </tr>  
+</table>
+
+
+<table id="bchoices">
+        <tr id="Select a Brand" style="display:none">
+            <td id=""></td>
+        </tr>
+
+        <tr id="Mobile">
+            <td id="Nokia"></td>
+            <td id="Xiaomi"></td>
+            <td id="Apple"></td>
+            <td id="Oppo"></td>
+            <td id="Vivo"></td>
+            <td id="Honor"></td>
+            <td id="Samsung"></td>
+            <td id="Pixle"></td>
+            <td id="Oneplus"></td>
+            <td id="Asus"></td>
+            <td id="Lenovo"></td>
+            <td id="Sony"></td>
+        </tr>  
+</table>
+
+
+
+
+<table id="cchoices">
+        <tr id="Select a Ram" style="display:none">
+            <td id=""></td>
+        </tr>
+
+        <tr id="Mobile">
+            <td id="1GB"></td>
+            <td id="2GB"></td>
+            <td id="3GB"></td>
+            <td id="4GB"></td>
+            <td id="6GB"></td>
+            <td id="8GB"></td>
+            <td id="10GB"></td>
+            <td id="12GB"></td>
+        </tr>  
+</table>
+
+
+<table id="dchoices">
+        <tr id="Select a Storage" style="display:none">
+            <td id=""></td>
+        </tr>
+
+        <tr id="Mobile">
+            <td id="8GB"></td>
+            <td id="16GB"></td>
+            <td id="32GB"></td>
+            <td id="64GB"></td>
+            <td id="128GB"></td>
+            <td id="264GB"></td>
+            <td id="500GB"></td>
         </tr>  
 </table>
 
@@ -698,13 +770,82 @@ function populateSublist(choice) {
     });
 }
 
+
+
+function populateFilterlist(bchoice) {
+    $('#brand_list').find('option').remove();
+    $('#bchoices').find('tr').each(function() {
+        trowid = $(this).attr('id');
+        $(this).find('td').each(function() {
+           tdid = $(this).attr('id');
+            if(trowid != bchoice)
+                return;            
+           $('#brand_list').append('<option>' + tdid + '</option>');
+        });
+    });
+}
+
+function populateFiltertwolist(cchoice) {
+    $('#ram_list').find('option').remove();
+    $('#cchoices').find('tr').each(function() {
+        trowid = $(this).attr('id');
+        $(this).find('td').each(function() {
+           tdid = $(this).attr('id');
+            if(trowid != cchoice)
+                return;            
+           $('#ram_list').append('<option>' + tdid + '</option>');
+        });
+    });
+}
+
+
+
+function populateFilterthreelist(dchoice) {
+    $('#storage_list').find('option').remove();
+    $('#dchoices').find('tr').each(function() {
+        trowid = $(this).attr('id');
+        $(this).find('td').each(function() {
+           tdid = $(this).attr('id');
+            if(trowid != dchoice)
+                return;            
+           $('#storage_list').append('<option>' + tdid + '</option>');
+        });
+    });
+}
+
 populateParentlist('Poland')
 populateSublist('Poland')
+populateFilterlist('Poland')
+populateFiltertwolist('Poland')
+populateFilterthreelist('Poland')
 
 $(function() {
     $("#category_list").change(function() {
         var parsel = $(this).val();
         populateSublist(parsel);
+    });
+});
+
+
+
+$(function() {
+    $("#category_list").change(function() {
+        var parsel = $(this).val();
+        populateFilterlist(parsel);
+    });
+});
+
+$(function() {
+    $("#category_list").change(function() {
+        var parsel = $(this).val();
+        populateFiltertwolist(parsel);
+    });
+});
+
+$(function() {
+    $("#category_list").change(function() {
+        var parsel = $(this).val();
+        populateFilterthreelist(parsel);
     });
 });
 </script>

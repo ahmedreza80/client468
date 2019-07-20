@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @previews = Preview.where(product_id: @product.id).order("created_at DESC")
+    @similar_products = Product.similar_products(@product)
     if @previews.blank?
       @avg_preview = 0
     else
@@ -95,6 +96,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :description, :brand, :ram, :storage, :phone, :offerprice, :gst, :image, :imagetwo, :imagethree, :category, :city, :state, :area, :sub_category)
+      params.require(:product).permit(:name, :price, :description, :brand, :ram, :storage, :phone, :offerprice, :gst, :image, :imagetwo, :imagethree, :imagefour, :imagefive, :category, :city, :state, :area, :sub_category)
     end
 end

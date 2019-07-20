@@ -8,6 +8,7 @@ class Product < ApplicationRecord
 	has_many :orders, through:  :items
 	has_many :previews
 	acts_as_commontable
+	scope :similar_products, ->(product) { where("id != ? and category = ?", product.id, product.category) }
 
 
 

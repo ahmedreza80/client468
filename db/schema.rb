@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190715055148) do
+ActiveRecord::Schema.define(version: 20190719123017) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 20190715055148) do
     t.string "total"
     t.string "quantity"
     t.string "repeat"
+    t.string "state"
+    t.string "area"
     t.index ["order_id"], name: "index_orders_on_order_id"
   end
 
@@ -173,6 +175,8 @@ ActiveRecord::Schema.define(version: 20190715055148) do
     t.string "brand"
     t.string "ram"
     t.string "storage"
+    t.string "imagefour"
+    t.string "imagefive"
     t.index ["shop_id"], name: "index_products_on_shop_id"
   end
 

@@ -121,22 +121,60 @@
                                                           <%= f.text_field :delivery_address, :class => 'lala', :value => current_or_guest_user.location, placeholder: "Complete Delivery Addresss" %>
                                                         </div>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <div class="d-flex justify-content-between">
+                                                       
+                                                          <%= f.text_field :state, :class => 'lala', placeholder: "State" %>
+                                                        </div>
+                                                    </div>
 
                                                         <div class="form-group">
                                                             <div class="d-flex justify-content-between">
                                                        
-                                                          <%= f.text_field :city, :class => 'lala', placeholder: "Delivery City" %>
+                                                          <%= f.text_field :city, :class => 'lala', placeholder: "City / District" %>
                                                         </div>
                                                     </div>
 
+                                                    <div class="form-group">
+                                                            <div class="d-flex justify-content-between">
+                                                       
+                                                          <%= f.text_field :area, :class => 'lala', placeholder: "Locality / Area" %>
+                                                        </div>
+                                                    </div>
+
+                                                      <div class="form-group">
+                                                            <div class="d-flex justify-content-between">
+                                                          <%= f.text_field :pincode, :class => 'lala', :value => current_or_guest_user.pincode, placeholder: "Pincode" %>
+                                                        </div>
+                                                    </div>
+<br>
+<br>
+<br>
+
+<div class="modal" id="myModalrepeat">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Repeat This Order</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="overflow-y:visible;">
+          <div class="jumbotron">
                                                     <div class="form-group">
                                                             <div class="d-flex justify-content-between">
                                                               <p><b>Repeat this order:</b></p>
                                                               <br>
                                                           <%= label_tag 'repeat_everyday', 'Everyday' %>
                                                           <%= check_box_tag 'order[repeat][]', 'Everyday', checked('Everyday'), id: 'repeat_everyday' %>
+                                                        </div>
+                                                      </div>
 
-<br>
+                                                       <div class="jumbotron">
+                                                    <div class="form-group">
                                                           <p><b>Repeat this order Every:</b></p>
                                                           <br>
                                                           <%= label_tag 'repeat_monday', 'Monday' %>
@@ -175,14 +213,20 @@
                                                           <%= check_box_tag 'order[repeat][]', 'Sunday', checked('Sunday'), id: 'repeat_sunday' %>
                                                         </div>
                                                     </div>
+                                                  </div>
+                  </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+                                                         
 
-                                                    <div class="jumbotron">
-                                                      <div class="form-group">
-                                                            <div class="d-flex justify-content-between">
-                                                          <%= f.text_field :pincode, :class => 'lala', :value => current_or_guest_user.pincode, placeholder: "Pincode" %>
-                                                        </div>
-                                                    </div>
-                                                    </div>
+                                                    
 
                                                     <div class="form-group" style="display: none;">
                                                             <div class="d-flex justify-content-between">
@@ -198,7 +242,12 @@
                                                         </div>
                                                     </div>
                                                   </div>
+<div class="jumbotron">
 
+<button class="btn-form search-btn" type="button" data-toggle="modal" data-target="#myModalrepeat">
+                Repeat My Order
+              </button>
+</div>
                                                     
                                                         <div class="dim" style="padding:0; margin:0;">
                                                               <%= f.submit "Save & Continue", class: "btn-success" %>
