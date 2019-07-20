@@ -109,7 +109,7 @@
               <%= form_tag order_items_path do %>
         <%= hidden_field_tag :product_id, @product.id %>
        
-        <%= number_field_tag :quantity, style:"background-color:#fff;", 1 %>
+        <%= number_field_tag :quantity, 1, style:'background-color:#fff;' %>
         <div class="ju"></div>
               <button class="add-to-cart btn btn-default" style="padding:10; margin:0;" type="submit">add to cart</button>
               <% end %>
