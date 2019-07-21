@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :shops do
   resources :comments, only: [:create, :index, :destroy]
   resources :reviews, except: [:show, :index]
+  resources :conversations, only: [:index, :show, :destroy]
 end
   # devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :products do
