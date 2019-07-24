@@ -604,7 +604,7 @@ function closeNav() {
   <a href="/users/sign_in"><i class="fas fa-sign-in-alt" style="padding-right:15px;"></i>Sign In</a>
   <a href="/users/sign_up"><i class="fas fa-sign-in-alt" style="padding-right:15px;"></i>Register</a>
   <% end %>
-<li><%= link_to 'Your Conversations', conversations_path %></li>
+
   <% if current_user && current_user.is_agent? %>
   <a href="/registeration_numbers"><i class="fas fa-users-cog" aria-hidden="true" style="padding-right:15px;"></i>Agent Panel</a>
   <% end %>
