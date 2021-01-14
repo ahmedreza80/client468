@@ -14,7 +14,7 @@ gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'rails_admin', '~> 1.3'
+gem 'rails_admin', '~> 1.4'
 
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
